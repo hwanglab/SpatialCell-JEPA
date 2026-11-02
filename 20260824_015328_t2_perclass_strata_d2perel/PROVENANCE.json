@@ -1,0 +1,72 @@
+{
+  "generated": "2026-08-24T01:53:29",
+  "script": "scripts/analysis/percell_class_and_composition_strata.py",
+  "maturity": "[FINAL n=12/12 slides]",
+  "inputs": {
+    "typing_tsv": {
+      "path": "results/reports/20260819_t2_selftile56_typing/ctrl_logistic_pca0/typing_t2_ctrl_fov56_logistic_pca0.tsv",
+      "md5": "9c4966cf7a7c3ae8299288c92949deed",
+      "size": 20285
+    },
+    "gt_dir": {
+      "path": "results/eval/gt_labels_hd12",
+      "n_parquet": 12,
+      "md5_each": {
+        "Slide 5.parquet": "bb9a3b78d9ff3addcb5a85f0ceb0c3b5",
+        "Slide 3.parquet": "b85aa511491ac363b4f04f49b35d345b",
+        "Slide 7.parquet": "728f1612a3dc06f5ea9175980bd496b4",
+        "Slide 8.parquet": "6ae3f56607a2a7801817891e5743c6e7",
+        "Slide 1.parquet": "b2ecd266e051e33052d99ef400160374",
+        "Slide 6.parquet": "b2640bf064496178725cfdda5f0a5ec9",
+        "Slide 11.parquet": "80b4016674fde3882b2c3982e944ad03",
+        "Slide 4.parquet": "965211262e87459b6f3d232454ff02a1",
+        "Slide 12.parquet": "546aec33b5920e8bd34a0bfc3b853ace",
+        "Slide 2.parquet": "38f40d06c71b97741013b120f6eec157",
+        "Slide 10.parquet": "8bd6fee159f56ed7c9db6021b30ea2b9",
+        "Slide 9.parquet": "0a80e9d1fbf69d834a8a840db300ae8e"
+      }
+    }
+  },
+  "readout_cell": {
+    "estimator": "logistic",
+    "C": 0.01,
+    "note": "C FIXED, not best_C; arms m and mu only"
+  },
+  "stratifier": {
+    "rule": "per-slide GT tumour fraction, split at the 12-slide median",
+    "median_frac_Tumor": 0.30805206431888943,
+    "computed_over": "ALL labelled cells in the slide, not the 12,000 sampled"
+  },
+  "caveats": [
+    "6 folds per stratum => Wilcoxon floor p=0.0312 two-sided; direction + effect size only.",
+    "A stratum difference here is a hypothesis, not a finding; MDE80 reported per row.",
+    "Per-CLASS F1 is an aggregate the readout already writes; this does NOT need the per-cell prediction dump that blocks ceiling-attribution option A."
+  ],
+  "spearman_delta_vs_composition": {
+    "macro_f1": {
+      "spearman_d_vs_fracTumor": -0.13986013986013987,
+      "pearson_d_vs_fracTumor": -0.2714252878891562,
+      "n_slides": 12
+    },
+    "acc": {
+      "spearman_d_vs_fracTumor": -0.34965034965034963,
+      "pearson_d_vs_fracTumor": -0.4486568806100346,
+      "n_slides": 12
+    },
+    "f1_Immune": {
+      "spearman_d_vs_fracTumor": 0.26620005796857155,
+      "pearson_d_vs_fracTumor": -0.03808184199790982,
+      "n_slides": 12
+    },
+    "f1_Stromal": {
+      "spearman_d_vs_fracTumor": 0.06993006993006994,
+      "pearson_d_vs_fracTumor": -0.06534111479114782,
+      "n_slides": 12
+    },
+    "f1_Tumor": {
+      "spearman_d_vs_fracTumor": -0.3852895575860904,
+      "pearson_d_vs_fracTumor": -0.5123047318489163,
+      "n_slides": 12
+    }
+  }
+}

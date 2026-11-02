@@ -1,0 +1,13 @@
+arm	estimator	C	pca	penalty	fold	held	macro_f1	acc	f1_Immune	f1_Stromal	f1_Tumor
+m	nystroem	0.01	64	l2	hd12_foldA	Slide 5	0.62125	0.68125	0.3794	0.6762	0.8082
+m	nystroem	0.01	64	l2	hd12_foldA	Slide 7	0.58773	0.60017	0.5709	0.6966	0.4957
+m	nystroem	0.01	64	l2	hd12_foldA	Slide 1	0.66269	0.80758	0.5735	0.4992	0.9154
+m	nystroem	0.01	64	l2	hd12_foldA	Slide 6	0.51634	0.59667	0.3245	0.7329	0.4916
+m	nystroem	0.01	64	l2	hd12_foldA	Slide 12	0.6527	0.73917	0.5253	0.8282	0.6046
+m	nystroem	0.01	64	l2	hd12_foldA	Slide 10	0.63544	0.71283	0.5524	0.8405	0.5134
+m	nystroem	0.01	64	l2	hd12_foldB	Slide 3	0.56309	0.62242	0.3612	0.561	0.7671
+m	nystroem	0.01	64	l2	hd12_foldB	Slide 8	0.56386	0.55858	0.5602	0.5284	0.6029
+m	nystroem	0.01	64	l2	hd12_foldB	Slide 11	0.64502	0.6675	0.6582	0.7098	0.567
+m	nystroem	0.01	64	l2	hd12_foldB	Slide 4	0.55055	0.64225	0.6783	0.327	0.6463
+m	nystroem	0.01	64	l2	hd12_foldB	Slide 2	0.6514	0.77925	0.401	0.6712	0.882
+m	nystroem	0.01	64	l2	hd12_foldB	Slide 9	0.6276	0.69433	0.4894	0.811	0.5824

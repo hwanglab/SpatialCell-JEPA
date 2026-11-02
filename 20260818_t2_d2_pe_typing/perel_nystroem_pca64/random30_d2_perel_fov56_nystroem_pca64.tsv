@@ -1,0 +1,8 @@
+arm	estimator	fold	random30_macro_f1	acc	n_train	n_test
+m	nystroem	lopo12	0.70017	0.71426	100800	43200
+mu	nystroem	lopo12	0.70638	0.72051	100800	43200
+r	nystroem	lopo12	0.61706	0.63104	100800	43200
+smooth	nystroem	lopo12	0.71805	0.73206	100800	43200
+m+mu	nystroem	lopo12	0.70753	0.72164	100800	43200
+m+smooth	nystroem	lopo12	0.72433	0.73852	100800	43200
+m+r	nystroem	lopo12	0.69336	0.70764	100800	43200

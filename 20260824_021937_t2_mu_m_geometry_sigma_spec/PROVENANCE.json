@@ -1,0 +1,98 @@
+{
+  "generated": "2026-08-24T02:21:55",
+  "script": "scripts/analysis/mu_m_geometry_and_sigma_spec.py",
+  "maturity": "[FINAL n=12/12 slides]",
+  "predictor": "results/eval/predout_corpus31_fov56_d2_perel",
+  "supersedes": "results/reports/20260721_192542_t2_mu_sigma_validation (predictor_out_fine112_m0, 3 slides) -- WRONG predictor for Table 1",
+  "params": {
+    "cache": "results/cache_fm_hd/hoptimus0",
+    "mu_dir": "results/eval/predout_corpus31_fov56_d2_perel",
+    "labels": "results/eval/gt_labels_hd12",
+    "fov": "fov56",
+    "k": 36,
+    "per_slide": 30000,
+    "seed": 0
+  },
+  "inputs": {
+    "Slide 5": {
+      "cache_md5": "00eeafd5762296f127700d721e40b8a2",
+      "mu_md5": "68ac035ff9ece516f78d3f7b43d3df5c",
+      "n_cells_total": 271481,
+      "n_scored": 30000
+    },
+    "Slide 3": {
+      "cache_md5": "a50c942af429448c6001b70d2076b14f",
+      "mu_md5": "0093bbcdef6cb1795c2af3b823fc5282",
+      "n_cells_total": 188745,
+      "n_scored": 30000
+    },
+    "Slide 7": {
+      "cache_md5": "f22daab2fce2fbe76f463b1aaefd771b",
+      "mu_md5": "709f68c28e5c1ddf0de7a92c05edd3a3",
+      "n_cells_total": 193267,
+      "n_scored": 30000
+    },
+    "Slide 8": {
+      "cache_md5": "44f7223576b88e4307400d06cd21975b",
+      "mu_md5": "d5acae803ddb91598227ad89e7fc46ba",
+      "n_cells_total": 306885,
+      "n_scored": 30000
+    },
+    "Slide 1": {
+      "cache_md5": "91845e2f704951cc1016f0c2a819615d",
+      "mu_md5": "e367295d7d3a6025683301cd6da1cb5f",
+      "n_cells_total": 362281,
+      "n_scored": 30000
+    },
+    "Slide 6": {
+      "cache_md5": "8ffeb23309e3f0d6794dffdd497a10e2",
+      "mu_md5": "7ec3d9e196c398e7a44ea323a16bff7e",
+      "n_cells_total": 175567,
+      "n_scored": 30000
+    },
+    "Slide 11": {
+      "cache_md5": "59718595af38d4797a29f933a46870c4",
+      "mu_md5": "7ac6f0d858ca9e899d091683053251f4",
+      "n_cells_total": 286170,
+      "n_scored": 30000
+    },
+    "Slide 4": {
+      "cache_md5": "722275ecfe0f357b4c670830213b11e7",
+      "mu_md5": "448fdb34f117269fb3111c6c42435e68",
+      "n_cells_total": 395459,
+      "n_scored": 30000
+    },
+    "Slide 12": {
+      "cache_md5": "53a05747a9a57196117dd6daebe1ce2a",
+      "mu_md5": "582d12df5f934b7baad1326539b5a2ab",
+      "n_cells_total": 232424,
+      "n_scored": 30000
+    },
+    "Slide 2": {
+      "cache_md5": "f3b279210aa44cd8aed74d7f8b006286",
+      "mu_md5": "f93f438608455988445cc06f2da4ac27",
+      "n_cells_total": 139768,
+      "n_scored": 30000
+    },
+    "Slide 10": {
+      "cache_md5": "674731b860631c816ac03aa976c6dbd0",
+      "mu_md5": "93af7756db73a77ddbb3fab40db949ff",
+      "n_cells_total": 145818,
+      "n_scored": 30000
+    },
+    "Slide 9": {
+      "cache_md5": "dd48af2ba8848cba04d699371183da8b",
+      "mu_md5": "5b14a93079bc3e592c0b4c3184dbd0cc",
+      "n_cells_total": 260364,
+      "n_scored": 30000
+    }
+  },
+  "logvar_clamp": [
+    -7.0,
+    7.0
+  ],
+  "caveats": [
+    "UNCENTERED cosine is inflated by the encoder's shared mean direction; report it only alongside the centered cosine and R^2.",
+    "R^2 cross-check is against a run with a different cell subsample => close, not exact; it is printed, never asserted."
+  ]
+}

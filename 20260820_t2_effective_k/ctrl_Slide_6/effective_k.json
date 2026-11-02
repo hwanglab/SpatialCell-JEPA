@@ -1,0 +1,133 @@
+{
+  "slide": "Slide 6",
+  "n_cells": 4096,
+  "Kc": 36,
+  "emb": 1536,
+  "predictor": "results/mssc_corpus31_ownknn_xattn_fov56_d2_perel/predictor_mssc.pt",
+  "layers": {
+    "layer0": {
+      "attn_weighted_mean_dist_um": 16.14483070373535,
+      "unweighted_mean_dist_um": 31.75465965270996,
+      "top_attended_dist_rank_mean": 2.1822509765625,
+      "top_attended_is_nearest_frac": 0.52410888671875,
+      "top_attended_in_nearest8_frac": 0.9293212890625,
+      "mass_within_nearest_4": 0.6703411340713501,
+      "mass_within_nearest_8": 0.7790384292602539,
+      "mass_within_nearest_12": 0.8282915949821472,
+      "mass_within_nearest_18": 0.8807443380355835,
+      "mass_within_nearest_36": 1.0,
+      "eff_k_mean": 7.641045093536377,
+      "eff_k_median": 5.7412590980529785,
+      "eff_k_p10": 1.9530138969421387,
+      "eff_k_p90": 16.421886444091797,
+      "self_mass_mean": 0.3555029332637787,
+      "per_head_eff_k": [
+        13.147537231445312,
+        8.69887638092041,
+        9.128232955932617,
+        4.115182876586914,
+        8.539327621459961,
+        5.657614231109619,
+        5.458879470825195,
+        6.382708549499512
+      ],
+      "top1": 0.48487037420272827,
+      "top3": 0.734524130821228,
+      "top6": 0.8473355174064636,
+      "top12": 0.9308291673660278,
+      "top18": 0.9674504995346069
+    },
+    "layer1": {
+      "attn_weighted_mean_dist_um": 15.788199424743652,
+      "unweighted_mean_dist_um": 31.75465965270996,
+      "top_attended_dist_rank_mean": 1.256988525390625,
+      "top_attended_is_nearest_frac": 0.516357421875,
+      "top_attended_in_nearest8_frac": 0.977264404296875,
+      "mass_within_nearest_4": 0.6588201522827148,
+      "mass_within_nearest_8": 0.7916703820228577,
+      "mass_within_nearest_12": 0.8496964573860168,
+      "mass_within_nearest_18": 0.9011405110359192,
+      "mass_within_nearest_36": 1.0,
+      "eff_k_mean": 9.04837703704834,
+      "eff_k_median": 7.073936462402344,
+      "eff_k_p10": 2.9126875400543213,
+      "eff_k_p90": 18.429306030273438,
+      "self_mass_mean": 0.18841665983200073,
+      "per_head_eff_k": [
+        6.867260932922363,
+        6.225486755371094,
+        8.708595275878906,
+        5.966926097869873,
+        7.417506217956543,
+        18.87311553955078,
+        5.181363105773926,
+        13.146763801574707
+      ],
+      "top1": 0.4259427785873413,
+      "top3": 0.6961904764175415,
+      "top6": 0.8187819719314575,
+      "top12": 0.9064397811889648,
+      "top18": 0.9487150311470032
+    }
+  },
+  "gate": {
+    "mean_cos_vs_stored_mu": 1.0000150203704834,
+    "max_abs_diff": 0.001953125,
+    "pass": true
+  },
+  "n_short_of_Kc": 0,
+  "n_zero_ctx": 0,
+  "sigma2": {
+    "s2_mean": 0.1638866364955902,
+    "s2_median": 0.1600070595741272,
+    "s2_p10": 0.10046296194195747,
+    "s2_p90": 0.23187126964330673,
+    "spearman_vs": {
+      "effective_k": {
+        "spearman_rho": 0.42465388779793756,
+        "p": 4.846592401035936e-179
+      },
+      "nn1_dist_um": {
+        "spearman_rho": 0.3907212526884832,
+        "p": 1.7150059974484578e-149
+      },
+      "n_within_22um": {
+        "spearman_rho": -0.27777726378930295,
+        "p": 1.838423751010913e-73
+      }
+    },
+    "note": "CHARACTERISATION, NOT VALIDATION. sigma^2 has no validated downstream use in this project; its only positive signal came from a post-hoc-selected estimator. Reported to describe the quantity, not to claim it works."
+  },
+  "geometry": {
+    "K4": {
+      "radius_um_median": 14.09990406036377,
+      "radius_um_q25": 11.352378606796265,
+      "radius_um_q75": 17.84501028060913,
+      "diameter_um_median": 28.19980812072754
+    },
+    "K8": {
+      "radius_um_median": 20.581859588623047,
+      "radius_um_q25": 16.69026803970337,
+      "radius_um_q75": 25.709476470947266,
+      "diameter_um_median": 41.163719177246094
+    },
+    "K12": {
+      "radius_um_median": 25.5050048828125,
+      "radius_um_q25": 20.770214080810547,
+      "radius_um_q75": 31.79394245147705,
+      "diameter_um_median": 51.010009765625
+    },
+    "K18": {
+      "radius_um_median": 31.5159912109375,
+      "radius_um_q25": 25.84744119644165,
+      "radius_um_q75": 39.009392738342285,
+      "diameter_um_median": 63.031982421875
+    },
+    "K36": {
+      "radius_um_median": 45.5871467590332,
+      "radius_um_q25": 37.21958827972412,
+      "radius_um_q75": 55.54421901702881,
+      "diameter_um_median": 91.1742935180664
+    }
+  }
+}

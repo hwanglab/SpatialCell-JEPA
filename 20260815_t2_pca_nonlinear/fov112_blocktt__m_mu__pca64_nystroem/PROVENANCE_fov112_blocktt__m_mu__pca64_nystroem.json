@@ -1,0 +1,40 @@
+{
+  "generated": "2026-08-15T13:57:38",
+  "cache": "results/cache_fm_hd/hoptimus0",
+  "mu_dir": "results/eval/predictor_out_p2_foldA_block_tt,results/eval/predictor_out_p2_foldB_block_tt",
+  "fold_lists": "results/slide_lists/hd12_foldA.tsv,results/slide_lists/hd12_foldB.tsv",
+  "labels": "results/eval/gt_labels_hd12",
+  "fov": "fov112",
+  "k": 36,
+  "per_slide": 12000,
+  "slideid_n": 4000,
+  "seed": 0,
+  "slides": [
+    "Slide 5",
+    "Slide 7",
+    "Slide 1",
+    "Slide 6",
+    "Slide 12",
+    "Slide 10",
+    "Slide 3",
+    "Slide 8",
+    "Slide 11",
+    "Slide 4",
+    "Slide 2",
+    "Slide 9"
+  ],
+  "arms": {
+    "m+mu": [
+      "m",
+      "mu"
+    ]
+  },
+  "estimator": "nystroem",
+  "estimator_spec": "Nystroem(rbf, n_components=1024, gamma=1/median pairwise sq dist on a 2000-cell TRAIN subsample) -> the same LogisticRegression",
+  "all_hyperparameters_fixed_not_tuned": true,
+  "slideid_estimator": "logistic (ALWAYS, independent of --estimator)",
+  "random30": null,
+  "typing_split": "WITHIN-FOLD leave-one-slide-out (trains on 5) \u2014 avoids the indirect leak described in Trap 1",
+  "slideid_split": "random 70/30 over cells, 12-way, chance 0.0833, LOWER is better",
+  "wall_s": 220.4
+}

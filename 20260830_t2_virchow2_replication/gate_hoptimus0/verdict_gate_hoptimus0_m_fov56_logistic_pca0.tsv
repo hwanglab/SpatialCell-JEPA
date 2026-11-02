@@ -1,0 +1,2 @@
+arm	mean	best_C	std	slide_id_acc	random30_macro_f1	gap_random30_minus_lopo	d_f1_vs_m	d_slideid_vs_m	WIN
+m	0.6159	0.01	0.062	0.98167	0.7121	0.0962	0.0	0.0	no

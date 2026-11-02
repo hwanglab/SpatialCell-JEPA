@@ -1,0 +1,38 @@
+{
+  "task": "P16 T2b predictor depth screen",
+  "primary_depth": 2,
+  "control_depth": 4,
+  "metric": "val NLL, mean of last 3 epochs, lower better",
+  "margin_rule": "2.0 x sd(control seeds), self-calibrated",
+  "decision_rule": "adopt primary unless mean(primary) - mean(control) > margin",
+  "test_type": "non-inferiority (NOT superiority)",
+  "licence": "[user 2026-08-17] screen alone sufficient; typing deferred to publication",
+  "provenance_of_choice": "[USER] prior, not an empirical selection",
+  "runs": {
+    "1": {
+      "0": "results/mssc_depthscreen_d1_s0",
+      "1": "results/mssc_depthscreen_d1_s1"
+    },
+    "2": {
+      "0": "results/mssc_depthscreen_d2_s0",
+      "1": "results/mssc_depthscreen_d2_s1",
+      "2": "results/mssc_depthscreen_d2_s2",
+      "3": "results/mssc_depthscreen_d2_s3",
+      "4": "results/mssc_depthscreen_d2_s4"
+    },
+    "3": {
+      "0": "results/mssc_depthscreen_d3_s0",
+      "1": "results/mssc_depthscreen_d3_s1"
+    },
+    "4": {
+      "0": "results/mssc_depthscreen_d4_s0",
+      "1": "results/mssc_depthscreen_d4_s1",
+      "2": "results/mssc_depthscreen_d4_s2",
+      "3": "results/mssc_depthscreen_d4_s3",
+      "4": "results/mssc_depthscreen_d4_s4"
+    }
+  },
+  "missing": [],
+  "matched_arm_gate": "PASS",
+  "matched_arm_violations": []
+}

@@ -1,0 +1,21 @@
+{
+  "generated": "20260816_193412",
+  "model": "results/mssc_corpus31_ownknn_xattn_fov112",
+  "predout": "results/eval/predout_corpus31_fov112",
+  "C": 0.01,
+  "refitting": "NONE \u2014 read verbatim",
+  "inputs": {
+    "logistic pca0": "results/reports/20260815_corpus31_typing_fov112/typing_corpus31_fov112.tsv",
+    "logistic pca64": "results/reports/20260816_pe_absolute_control/fov112_logistic_pca64/typing_corpus31_abs_fov112_logistic_pca64.tsv",
+    "nystroem pca0": "results/reports/20260816_pe_absolute_control/fov112_nystroem_pca0/typing_corpus31_abs_fov112_nystroem_pca0.tsv",
+    "nystroem pca64": "results/reports/20260816_pe_absolute_control/fov112_nystroem_pca64/typing_corpus31_abs_fov112_nystroem_pca64.tsv"
+  },
+  "split": "plain 12-fold LOPO, trains on 11",
+  "per_slide": 12000,
+  "not_included": [
+    "coarse channel",
+    "acellular channel",
+    "target-relative PE",
+    "encoder adaptation"
+  ]
+}

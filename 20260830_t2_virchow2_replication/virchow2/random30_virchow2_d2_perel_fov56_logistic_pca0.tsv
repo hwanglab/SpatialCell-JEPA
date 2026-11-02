@@ -1,0 +1,8 @@
+arm	estimator	fold	random30_macro_f1	acc	n_train	n_test
+m	logistic	lopo12	0.71338	0.72822	100800	43200
+mu	logistic	lopo12	0.71543	0.73009	100800	43200
+r	logistic	lopo12	0.68301	0.69801	100800	43200
+smooth	logistic	lopo12	0.71685	0.73167	100800	43200
+m+mu	logistic	lopo12	0.71542	0.73028	100800	43200
+m+smooth	logistic	lopo12	0.72243	0.73759	100800	43200
+m+r	logistic	lopo12	0.71543	0.73032	100800	43200

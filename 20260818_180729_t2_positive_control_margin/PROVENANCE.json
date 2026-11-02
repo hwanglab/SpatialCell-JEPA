@@ -1,0 +1,29 @@
+{
+  "generated": "2026-08-18T19:09:03",
+  "mu_dir": "results/eval/predout_corpus31_fov56_d2_perel",
+  "cache": "results/cache_fm_hd/hoptimus0",
+  "fov": 56,
+  "per_slide": 12000,
+  "C": 0.01,
+  "nq": 5,
+  "seed": 0,
+  "n_slides": 12,
+  "n_cells": 144000,
+  "n_nos": 23216,
+  "label_sets": [
+    "ALL",
+    "notNOS"
+  ],
+  "stratifiers": [
+    "margin",
+    "s2",
+    "resid"
+  ],
+  "selection_is_outcome_free": "margin from the m-probe fitted on TRAIN folds applied to held-out FEATURES; s2/resid are model outputs; no held-out label is used to select cells",
+  "preregistration": {
+    "primary": "(m+mu)-m at margin q=0, paired over 12 folds",
+    "win": ">= +0.02 with >= 8/12 folds",
+    "shape": "delta increases monotonically as margin decreases",
+    "kill": "flat across quintiles"
+  }
+}

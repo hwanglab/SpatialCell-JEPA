@@ -1,0 +1,2 @@
+arm	estimator	fold	random30_macro_f1	acc	n_train	n_test
+m	logistic	lopo12	0.71215	0.72704	100800	43200

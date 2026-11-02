@@ -1,0 +1,70 @@
+{
+  "task": "P16 T2 \u2014 paired 12-fold typing: 56 um self-tile arm vs matched control (THE Scenario B readout)",
+  "generated": "2026-08-19T20:30:00-04:00",
+  "slurm": "[redacted for anonymous review]",
+  "maturity": "[FINAL n=12/12 folds per cell, 8/8 cells]",
+  "script": "scripts/analysis/selftile56_paired_test.py",
+  "arm": "results/eval/predout_corpus31_fov56_d2_perel_self56m (12/12 npz)",
+  "control": "results/eval/predout_corpus31_fov56_d2_perel (12/12 npz)",
+  "one_variable": "--self-tiles + --self-tiles-block fine_cls_masked; all other flags verbatim",
+  "preregistration": {
+    "primary": "mu @ logistic/pca0",
+    "test": "superiority",
+    "bar": "+0.02 macro-F1 AND >=8/12 folds paired",
+    "C": "0.01 FIXED, never best_C",
+    "fixed_where": "slurm_selftile56_typing.sh header, before any number existed"
+  },
+  "gates": {
+    "gate1_m_identical": "PASS \u2014 max|delta|=0.000000000 on all 12 folds x 4 cells",
+    "gate2_harness_drift": "PASS \u2014 re-scored control m @ logistic/pca0 = 0.6159 vs standing 0.6159",
+    "free_extra": "m, smooth, m+smooth all delta exactly 0.0000 (predictor-independent)"
+  },
+  "result": {
+    "primary_delta": -0.0024,
+    "primary_folds_improving": "7/12",
+    "primary_p": 0.97,
+    "primary_mde80": 0.0112,
+    "verdict": "BAR NOT CLEARED \u2014 INFORMATIVE NULL (MDE80 0.0112 < 0.02 bar)",
+    "arms_clearing_bar": 0,
+    "largest_delta_anywhere": "r @ logistic/pca64 +0.0122 (9/12, p=0.042, MDE80 0.0160) \u2014 below bar, worst arm, 1 of 28 comparisons"
+  },
+  "caveats": [
+    "token DOES reach the prediction: mean |mu_selftile - mu_ctrl| = 0.08969 across 12 slides, nonzero everywhere",
+    "label ceiling UNCOMPUTED \u21d2 cannot attribute the null between \"context adds nothing\" and \"readout saturated by label noise\"",
+    "no multiplicity correction; pre-registration named only the primary"
+  ],
+  "inputs": [
+    {
+      "path": "results/reports/20260819_t2_selftile56_typing/ctrl_logistic_pca0/typing_t2_ctrl_fov56_logistic_pca0.tsv",
+      "md5": "9c4966cf7a7c3ae8299288c92949deed"
+    },
+    {
+      "path": "results/reports/20260819_t2_selftile56_typing/ctrl_logistic_pca64/typing_t2_ctrl_fov56_logistic_pca64.tsv",
+      "md5": "25b274a223d74e4ddf0f4bc94af052a8"
+    },
+    {
+      "path": "results/reports/20260819_t2_selftile56_typing/ctrl_nystroem_pca0/typing_t2_ctrl_fov56_nystroem_pca0.tsv",
+      "md5": "94698aecdd8a9ea115dc5ee393c18d69"
+    },
+    {
+      "path": "results/reports/20260819_t2_selftile56_typing/ctrl_nystroem_pca64/typing_t2_ctrl_fov56_nystroem_pca64.tsv",
+      "md5": "9fe3333c4165c9440fc13bfc0dc0aed8"
+    },
+    {
+      "path": "results/reports/20260819_t2_selftile56_typing/self56m_logistic_pca0/typing_t2_self56m_fov56_logistic_pca0.tsv",
+      "md5": "c9d8b53b641b4a68006e5fcb4d51304e"
+    },
+    {
+      "path": "results/reports/20260819_t2_selftile56_typing/self56m_logistic_pca64/typing_t2_self56m_fov56_logistic_pca64.tsv",
+      "md5": "55df8cedd4fa9ba546ad7f99ec986cd5"
+    },
+    {
+      "path": "results/reports/20260819_t2_selftile56_typing/self56m_nystroem_pca0/typing_t2_self56m_fov56_nystroem_pca0.tsv",
+      "md5": "40848609afaf231108dd313bf74b43a2"
+    },
+    {
+      "path": "results/reports/20260819_t2_selftile56_typing/self56m_nystroem_pca64/typing_t2_self56m_fov56_nystroem_pca64.tsv",
+      "md5": "9d007afbb93266b3a27a243413e40a8e"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "maturity": "[FINAL n=12/12 slides]",
+  "n_cells_scored": 360000,
+  "cos_uncentered_median": 0.808519184589386,
+  "cos_uncentered_median_of_slide_medians": 0.808519184589386,
+  "cos_slidecentered_median_of_slide_medians": 0.7337434887886047,
+  "r2_total_globalmean": 0.5321583151817322,
+  "r2_within_slide": 0.510674263721995,
+  "r2_crosscheck_expected": {
+    "total": 0.5372,
+    "within_slide": 0.5259,
+    "src": "results/reports/20260818_164826_t2_within_slide_r2/results.json"
+  },
+  "mse_ours_median_of_slides": 0.13470080494880676,
+  "mse_nbr36_median_of_slides": 0.2440418004989624,
+  "mse_global_median_of_slides": 0.2981335520744324,
+  "sbar_median_of_slides": 0.36684419214725494,
+  "sbar_slide_spread": [
+    0.30980879068374634,
+    0.3908829092979431
+  ],
+  "frac_s2_at_floor_max": 0.0006510633680555556,
+  "frac_s2_at_ceil_max": 0.0,
+  "calib_ratio_median": 0.9174920989550879,
+  "spearman_sigma_vs_r2_median": 0.7614138366406369,
+  "spearman_sigma_vs_nbr_entropy_median": 0.10575219752537304,
+  "spearman_sigma_vs_nbr_entropy_slidewise_sign_consistent": false,
+  "spearman_sigma_vs_density_median": 0.16629449767188476,
+  "spearman_sigma_vs_mnorm_median": 0.3410667892300591,
+  "sbar_by_class_pooled": {
+    "Immune": 0.37001872062683105,
+    "Stromal": 0.3823927044868469,
+    "Tumor": 0.333812952041626
+  },
+  "centering_basis": "slide mean of m over the scored cells (descriptive, not fitted)",
+  "sigma_definition": "mean over the 1536 dims of sqrt(s2); NOT the variance",
+  "nbr_sets": {
+    "mse_nbr36": "36-NN over ALL cells (the `smooth` rule)",
+    "type_entropy": "36-NN over LABELLED cells only"
+  }
+}

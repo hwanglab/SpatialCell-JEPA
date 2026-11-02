@@ -1,0 +1,67 @@
+{
+  "task": "P16 T2 \u2014 effective K: how many of its 36 context cells does the trained predictor use?",
+  "generated": "2026-08-20T13:15:00-04:00",
+  "author": "[redacted for anonymous review]",
+  "maturity": "[FINAL n=4/4 slides x 4,096 cells]",
+  "slurm": "[redacted for anonymous review]",
+  "script": "scripts/analysis/effective_k_attention.py",
+  "predictor": "results/mssc_corpus31_ownknn_xattn_fov56_d2_perel/predictor_mssc.pt",
+  "gates": {
+    "exactness": "PASS \u2014 mean cos(mu_here, mu_stored) >= 0.99997 on all 4 slides",
+    "capture": "ADDED after 51412465 passed the exactness gate and captured ZERO attention tensors (TransformerEncoderLayer sparsity fast path bypassed self_attn.forward). Fixed with a no-op forward pre-hook + hard abort on 0 captures."
+  },
+  "headline": {
+    "effective_k_layer0": 7.35,
+    "top1": 0.478,
+    "top6": 0.859,
+    "top12_by_attention": 0.94,
+    "mass_within_nearest_8": 0.809,
+    "mass_within_nearest_12": 0.86,
+    "attn_weighted_mean_dist_um": 13.62,
+    "unweighted_mean_dist_um": 27.0,
+    "top_attended_in_nearest8_frac": 0.951
+  },
+  "geometry_um": {
+    "nn1_spacing": 6.87,
+    "K4_radius": 12.5,
+    "K8_radius": 17.9,
+    "K12_radius": 22.0,
+    "K18_radius": 27.0,
+    "K36_radius": 38.6,
+    "density_cells_per_mm2": 8504,
+    "density_self_consistency_CV": 0.018
+  },
+  "cap22_dose": {
+    "median_kept_of_36": 12,
+    "pct_short_of_36": 99.8,
+    "pct_below_training_floor": 4.34,
+    "pct_zero_ctx": 0.23,
+    "comparison": "the existing 50 um cap (SB r16, delta -0.0004) bit only 4.3% of cells"
+  },
+  "caveats": [
+    "effective K is a SOFT count and tail-generous at Hill order 1 => 7.35 is an over-estimate",
+    "layer 1 is contaminated by context-context mixing; layer 0 is the clean read",
+    "per-head effective K ranges ~4.2 to ~13.1 \u2014 the scalar hides real structure",
+    "measures a model TRAINED at Kc=36; a model trained at Kc=12 could differ",
+    "MPP hardcoded 0.2522 vs per-slide 0.2522-0.2525 => 0.12% scale error on all distances"
+  ],
+  "launched": "[redacted for anonymous review]",
+  "inputs": [
+    {
+      "path": "results/reports/20260820_t2_effective_k/ctrl_Slide 1/effective_k.json",
+      "md5": "30b8ddcbc05fa3c494212a6a933c5883"
+    },
+    {
+      "path": "results/reports/20260820_t2_effective_k/ctrl_Slide 6/effective_k.json",
+      "md5": "6929154587795a749209bced2a283727"
+    },
+    {
+      "path": "results/reports/20260820_t2_effective_k/ctrl_Slide 4/effective_k.json",
+      "md5": "7fbaece069abc9c97f5aefcd0f05e730"
+    },
+    {
+      "path": "results/reports/20260820_t2_effective_k/ctrl_Slide 2/effective_k.json",
+      "md5": "a97bfc5659f53b09d6739c8832a7be16"
+    }
+  ]
+}

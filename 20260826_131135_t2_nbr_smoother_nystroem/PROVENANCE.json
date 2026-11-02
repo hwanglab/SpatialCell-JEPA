@@ -1,0 +1,101 @@
+{
+  "generated": "2026-08-26T14:39:32",
+  "script": "scripts/analysis/neighborhood_homogeneity_strata.py",
+  "mu_dir": "results/eval/predout_corpus31_fov56_d2_perel",
+  "cache": "results/cache_fm_hd/hoptimus0",
+  "fov": 56,
+  "per_slide": 12000,
+  "C": 0.01,
+  "nq": 5,
+  "ks": [
+    8,
+    36
+  ],
+  "seed": 0,
+  "estimator": "nystroem",
+  "min_cells": 50,
+  "nbr_k": 36,
+  "nbr_over": "all_segmented_cells",
+  "n_slides": 12,
+  "n_cells": 144000,
+  "gate_r": {
+    "measured": 0.6173585723367528,
+    "standing": 0.6174,
+    "passed": true
+  },
+  "gate_c": {
+    "rho_pred_mean": {
+      "8": 0.6291150445988454,
+      "36": 0.6369430495367685
+    },
+    "note": "large |rho| => this re-derives Table 3's margin stratifier"
+  },
+  "nn_radius_um": {
+    "Slide 5": {
+      "8": 77.65167114758664,
+      "36": 168.89198982392435
+    },
+    "Slide 3": {
+      "8": 67.7191182800916,
+      "36": 144.6195742446784
+    },
+    "Slide 7": {
+      "8": 86.17768982733371,
+      "36": 195.39485101777953
+    },
+    "Slide 8": {
+      "8": 67.30821001130428,
+      "36": 145.79028593232474
+    },
+    "Slide 1": {
+      "8": 67.23398238379266,
+      "36": 142.92648982922503
+    },
+    "Slide 6": {
+      "8": 91.8385467678716,
+      "36": 204.9035481418667
+    },
+    "Slide 11": {
+      "8": 68.32728489608547,
+      "36": 153.65513614771922
+    },
+    "Slide 4": {
+      "8": 56.280206741585,
+      "36": 118.87876566830111
+    },
+    "Slide 12": {
+      "8": 90.10500891682653,
+      "36": 197.35646074856973
+    },
+    "Slide 2": {
+      "8": 100.75451871521408,
+      "36": 218.57306774345318
+    },
+    "Slide 10": {
+      "8": 87.43177976015997,
+      "36": 198.17157585628567
+    },
+    "Slide 9": {
+      "8": 73.06877178491678,
+      "36": 157.80527493371642
+    }
+  },
+  "stratifiers": {
+    "primary": "f8_pred (label-free: neighbour types predicted by the m-only probe fitted on the 11 TRAINING slides)",
+    "diagnostic": [
+      "f8_gt",
+      "f36_gt",
+      "reads held-out labels; mechanism check only"
+    ],
+    "robustness": [
+      "f36_pred"
+    ]
+  },
+  "preregistration": {
+    "primary": "macro-F1(mu) - macro-F1(m), paired over 12 folds, f_pred==0 vs f_pred==1",
+    "shape": "the two extremes should differ [user 2026-08-25]",
+    "flat_absolute": "=> real defect: mu is not reading the neighbourhood",
+    "flat_delta": "=> not a defect: m and mu degrade together, no complementarity",
+    "confound": "own-type fraction is class-confounded (eta^2 0.064); within-class readout is per-class recall/precision"
+  }
+}

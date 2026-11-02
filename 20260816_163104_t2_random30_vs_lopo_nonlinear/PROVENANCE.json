@@ -1,0 +1,9 @@
+{
+  "generated": "20260816_163104",
+  "source": "results/reports/20260814_t2_nonlinear_typing_M1_vs_M12",
+  "refitting": "NONE \u2014 read verbatim",
+  "random30_split": "within-fold pooled cells, stratified 70/30, averaged over the 2 folds",
+  "lopo_split": "within-fold leave-one-slide-out, trains on 5, 12 folds",
+  "warning": "random-30 has n=2 folds and LOPO n=12 \u2014 NOT cross-comparable as tests; the GAP is the readable quantity",
+  "pca_x_random30": "DOES NOT EXIST \u2014 --random30 never passed to any PCA grid"
+}
