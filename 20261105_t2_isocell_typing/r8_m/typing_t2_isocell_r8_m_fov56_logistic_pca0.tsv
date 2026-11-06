@@ -1,0 +1,13 @@
+arm	estimator	C	pca	penalty	fold	held	macro_f1	acc	f1_Immune	f1_Stromal	f1_Tumor
+m	logistic	0.01	0	l2	lopo12	Slide 5	0.62607	0.69483	0.3825	0.7023	0.7935
+m	logistic	0.01	0	l2	lopo12	Slide 3	0.54224	0.59583	0.366	0.5006	0.7601
+m	logistic	0.01	0	l2	lopo12	Slide 7	0.57732	0.59883	0.5666	0.6988	0.4666
+m	logistic	0.01	0	l2	lopo12	Slide 8	0.57924	0.58158	0.5481	0.6162	0.5734
+m	logistic	0.01	0	l2	lopo12	Slide 1	0.64691	0.81142	0.5283	0.4978	0.9146
+m	logistic	0.01	0	l2	lopo12	Slide 6	0.51836	0.5855	0.329	0.7059	0.5202
+m	logistic	0.01	0	l2	lopo12	Slide 11	0.63298	0.64992	0.6469	0.6851	0.567
+m	logistic	0.01	0	l2	lopo12	Slide 4	0.54471	0.63825	0.6736	0.3266	0.6339
+m	logistic	0.01	0	l2	lopo12	Slide 12	0.64415	0.73783	0.5252	0.8293	0.5779
+m	logistic	0.01	0	l2	lopo12	Slide 2	0.64954	0.77658	0.4	0.6706	0.878
+m	logistic	0.01	0	l2	lopo12	Slide 10	0.63993	0.72583	0.5434	0.8505	0.5259
+m	logistic	0.01	0	l2	lopo12	Slide 9	0.65303	0.70383	0.5251	0.8166	0.6173

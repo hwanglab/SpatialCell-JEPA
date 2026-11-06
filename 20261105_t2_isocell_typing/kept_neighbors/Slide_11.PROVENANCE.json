@@ -1,0 +1,47 @@
+{
+  "task": "P16 T2 kept-neighbour counts for m_iso(r)",
+  "generated_utc": "2026-11-06T04:48:09.157609+00:00",
+  "script": "scripts/analysis/count_kept_neighbors.py",
+  "args": {
+    "slide": "Datasets/eval_cohort/raw_data/HE_images/Batch2_Re/Slide 11.svs",
+    "slide_id": "Slide 11",
+    "polygons_npz": "results/polygons_v2/Slide 11/polygons.npz",
+    "cache_dir": "results/cache_fm_hd/hoptimus0/Slide 11/fov56",
+    "max_cells": 0,
+    "targets": "results/masked_ctx/eval12_typing_cells.parquet",
+    "rings_um": "4,8,14",
+    "search_um": 45.0,
+    "limit": 0,
+    "out": "results/reports/20261105_t2_isocell_typing/kept_neighbors",
+    "summarize": false
+  },
+  "mpp": 0.2525,
+  "tile_px": 224,
+  "n_targets": 12000,
+  "inputs": {
+    "slide": {
+      "path": "Datasets/eval_cohort/raw_data/HE_images/Batch2_Re/Slide 11.svs",
+      "size": 536873319,
+      "mtime": "2026-01-07T19:41:14.579967+00:00"
+    },
+    "cache_cells": {
+      "path": "results/cache_fm_hd/hoptimus0/Slide 11/fov56/cells.npz",
+      "size": 882549060,
+      "mtime": "2026-08-08T00:43:34.871278+00:00"
+    },
+    "polygons_npz": {
+      "path": "results/polygons_v2/Slide 11/polygons.npz",
+      "size": 23662108,
+      "mtime": "2026-08-04T04:08:29.136037+00:00"
+    },
+    "targets": {
+      "path": "results/masked_ctx/eval12_typing_cells.parquet",
+      "size": 768328,
+      "mtime": "2026-11-04T05:05:53.080402+00:00"
+    }
+  },
+  "gates": {
+    "G0_order": "PASS"
+  },
+  "wall_s": 274.79572796821594
+}

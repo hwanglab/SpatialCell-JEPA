@@ -1,0 +1,63 @@
+{
+  "generated": "2026-11-05T11:09:55",
+  "script": "scripts/analysis/merge_maskctx_split.py",
+  "inputs": {
+    "results/reports/20261104_t2_maskctx_typing/Efixed_target_logistic_pca0/split/m/typing_t2_maskctx_Efixed_target_m_fov56_logistic_pca0.tsv": {
+      "mtime": 1793855863.8125958,
+      "size": 2879
+    },
+    "results/reports/20261104_t2_maskctx_typing/Efixed_target_logistic_pca0/split/m/slideid_t2_maskctx_Efixed_target_m_fov56_logistic_pca0.tsv": {
+      "mtime": 1793855927.85367,
+      "size": 68
+    },
+    "results/reports/20261104_t2_maskctx_typing/Efixed_target_logistic_pca0/split/mu/typing_t2_maskctx_Efixed_target_mu_fov56_logistic_pca0.tsv": {
+      "mtime": 1793858299.417068,
+      "size": 2904
+    },
+    "results/reports/20261104_t2_maskctx_typing/Efixed_target_logistic_pca0/split/mu/slideid_t2_maskctx_Efixed_target_mu_fov56_logistic_pca0.tsv": {
+      "mtime": 1793858347.5927637,
+      "size": 69
+    },
+    "results/reports/20261104_t2_maskctx_typing/Efixed_target_logistic_pca0/split/r/typing_t2_maskctx_Efixed_target_r_fov56_logistic_pca0.tsv": {
+      "mtime": 1793857566.8397698,
+      "size": 2874
+    },
+    "results/reports/20261104_t2_maskctx_typing/Efixed_target_logistic_pca0/split/r/slideid_t2_maskctx_Efixed_target_r_fov56_logistic_pca0.tsv": {
+      "mtime": 1793857678.7557106,
+      "size": 68
+    },
+    "results/reports/20261104_t2_maskctx_typing/Efixed_target_logistic_pca0/split/smooth/typing_t2_maskctx_Efixed_target_smooth_fov56_logistic_pca0.tsv": {
+      "mtime": 1793863018.0425549,
+      "size": 3047
+    },
+    "results/reports/20261104_t2_maskctx_typing/Efixed_target_logistic_pca0/split/smooth/slideid_t2_maskctx_Efixed_target_smooth_fov56_logistic_pca0.tsv": {
+      "mtime": 1793863043.468171,
+      "size": 73
+    },
+    "results/reports/20261104_t2_maskctx_typing/Efixed_target_logistic_pca0/split/mpmu/typing_t2_maskctx_Efixed_target_mpmu_fov56_logistic_pca0.tsv": {
+      "mtime": 1793859402.53758,
+      "size": 2985
+    },
+    "results/reports/20261104_t2_maskctx_typing/Efixed_target_logistic_pca0/split/mpmu/slideid_t2_maskctx_Efixed_target_mpmu_fov56_logistic_pca0.tsv": {
+      "mtime": 1793859441.9143007,
+      "size": 71
+    },
+    "results/reports/20261104_t2_maskctx_typing/Efixed_target_logistic_pca0/split/mpsmooth/typing_t2_maskctx_Efixed_target_mpsmooth_fov56_logistic_pca0.tsv": {
+      "mtime": 1793855878.1103225,
+      "size": 3126
+    },
+    "results/reports/20261104_t2_maskctx_typing/Efixed_target_logistic_pca0/split/mpsmooth/slideid_t2_maskctx_Efixed_target_mpsmooth_fov56_logistic_pca0.tsv": {
+      "mtime": 1793855892.6619086,
+      "size": 74
+    },
+    "results/reports/20261104_t2_maskctx_typing/Efixed_target_logistic_pca0/split/mpr/typing_t2_maskctx_Efixed_target_mpr_fov56_logistic_pca0.tsv": {
+      "mtime": 1793858097.477263,
+      "size": 2953
+    },
+    "results/reports/20261104_t2_maskctx_typing/Efixed_target_logistic_pca0/split/mpr/slideid_t2_maskctx_Efixed_target_mpr_fov56_logistic_pca0.tsv": {
+      "mtime": 1793858122.6895366,
+      "size": 70
+    }
+  },
+  "note": "merged from one-representation-per-task split runs; typing identical to joint run; slide-ID NOT byte-identical (sequential rng over arms)"
+}

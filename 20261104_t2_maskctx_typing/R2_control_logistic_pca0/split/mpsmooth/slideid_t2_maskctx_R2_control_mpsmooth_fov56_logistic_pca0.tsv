@@ -1,0 +1,2 @@
+arm	slide_id_acc	chance	n_train	n_test
+m+smooth	0.9991	0.0833	33600	14400

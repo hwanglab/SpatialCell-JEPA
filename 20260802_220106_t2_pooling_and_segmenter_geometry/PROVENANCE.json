@@ -1,0 +1,72 @@
+{
+  "task": "P16 T2 pooling-rule x segmenter geometry audit",
+  "generated_utc": "2026-08-02T22:05:27.276691+00:00",
+  "slurm_job_id": "13259653",
+  "cluster": "[redacted for anonymous review]",
+  "script": "scripts/analysis/pooling_rule_and_segmenter_geometry.py",
+  "script_sha256": "2648e570b5a00f794d7a10cffd5b62b23acac941ca54eacbdae85523f964b949",
+  "env": "cellvit_env (miniconda3/24.1.2-py310)",
+  "determinism": "seeded ROI sampling (--seed 0); all geometry deterministic",
+  "inputs": {
+    "Slide 6": {
+      "hoverfast": {
+        "path": "Datasets/eval_cohort/processed_data/cell_seg_hoverfast/Slide 6/Slide 6.json.gz",
+        "size": 56084700,
+        "mtime": "2026-04-25T23:50:37.063444+00:00"
+      },
+      "cellvit_json": {
+        "path": "Datasets/cohorts/processed_data/cell_seg_classificition/eval_cohort/CellViT-Virchow-x40/Slide 6_cells.json",
+        "size": 443922261,
+        "mtime": "2026-04-18T03:35:47.171754+00:00"
+      },
+      "cellvit_parquet": {
+        "path": "Datasets/cohorts/processed_data/cell_seg_classificition/eval_cohort/CellViT-Virchow-x40/Slide 6_cells_centroids.parquet",
+        "size": 7021367,
+        "mtime": "2026-05-28T19:59:58.974842+00:00"
+      }
+    },
+    "Slide 12": {
+      "hoverfast": {
+        "path": "Datasets/eval_cohort/processed_data/cell_seg_hoverfast/Slide 12/Slide 12.json.gz",
+        "size": 29818459,
+        "mtime": "2026-04-25T23:53:39.925666+00:00"
+      },
+      "cellvit_json": {
+        "path": "Datasets/cohorts/processed_data/cell_seg_classificition/eval_cohort/CellViT-Virchow-x40/Slide 12_cells.json",
+        "size": 252864131,
+        "mtime": "2026-04-18T02:44:54.007603+00:00"
+      },
+      "cellvit_parquet": {
+        "path": "Datasets/cohorts/processed_data/cell_seg_classificition/eval_cohort/CellViT-Virchow-x40/Slide 12_cells_centroids.parquet",
+        "size": 4010905,
+        "mtime": "2026-05-29T05:39:54.768233+00:00"
+      }
+    },
+    "Slide 2": {
+      "hoverfast": {
+        "path": "Datasets/eval_cohort/processed_data/cell_seg_hoverfast/Slide 2/Slide 2.json.gz",
+        "size": 48026115,
+        "mtime": "2026-04-25T23:54:58.556768+00:00"
+      },
+      "cellvit_json": {
+        "path": "Datasets/cohorts/processed_data/cell_seg_classificition/eval_cohort/CellViT-Virchow-x40/Slide 2_cells.json",
+        "size": 413049854,
+        "mtime": "2026-04-18T03:27:20.188165+00:00"
+      },
+      "cellvit_parquet": {
+        "path": "Datasets/cohorts/processed_data/cell_seg_classificition/eval_cohort/CellViT-Virchow-x40/Slide 2_cells_centroids.parquet",
+        "size": 5899113,
+        "mtime": "2026-05-29T05:37:13.188314+00:00"
+      }
+    }
+  },
+  "config": {
+    "margin_um": 0.0,
+    "patch_px": 14,
+    "mpp": 0.2522,
+    "n_roi": 12,
+    "roi_px": 2048,
+    "match_tol_um": 3.0,
+    "coverage_note": "ROI-subsampled, NOT whole-slide: 12 x 2048px windows per slide (~15k cells/segmenter/slide). ROI sampling is deliberate -- contamination needs intact neighbourhoods."
+  }
+}

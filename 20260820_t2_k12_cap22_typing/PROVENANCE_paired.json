@@ -26,7 +26,7 @@
   ],
   "train_args": {
     "ctrl": {
-      "slides": "results/slide_lists/ssl_train31_stmary.tsv",
+      "slides": "results/slide_lists/ssl_train31_cohort.tsv",
       "cache": "results/cache_corpus31/hoptimus0/hoptimus0",
       "out": "results/mssc_corpus31_ownknn_xattn_fov56_d2_perel",
       "fine_fov": 56,
@@ -56,7 +56,7 @@
       "smoke": false
     },
     "k12": {
-      "slides": "results/slide_lists/ssl_train31_stmary.tsv",
+      "slides": "results/slide_lists/ssl_train31_cohort.tsv",
       "cache": "results/cache_corpus31/hoptimus0/hoptimus0",
       "out": "results/mssc_corpus31_ownknn_xattn_fov56_d2_perel_k12",
       "fine_fov": 56,
@@ -88,7 +88,7 @@
       "smoke": false
     },
     "cap22": {
-      "slides": "results/slide_lists/ssl_train31_stmary.tsv",
+      "slides": "results/slide_lists/ssl_train31_cohort.tsv",
       "cache": "results/cache_corpus31/hoptimus0/hoptimus0",
       "out": "results/mssc_corpus31_ownknn_xattn_fov56_d2_perel_cap22",
       "fine_fov": 56,

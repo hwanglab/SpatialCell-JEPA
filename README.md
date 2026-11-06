@@ -34,8 +34,8 @@ diagnosis, so H&E sections exist at a scale no molecular assay matches, and they
 morphology and tissue architecture that spatial analysis needs. What is missing is a *per-cell*
 representation from H&E informative enough for downstream analysis such as cell typing.
 
-How much of the neighborhood such a representation must carry **explicitly** is not obvious — because
-a crop centered on a cell already contains its neighbors. That is what this work measures.
+Because the image crop a cell is embedded from also contains its neighbors, such a representation
+may already carry the neighborhood without being trained to. Whether it does is what this work tests.
 
 ### 1.3 Why a JEPA objective
 
@@ -73,19 +73,27 @@ what adaptation did. So the encoder stays **frozen** and we train **only the pre
 
 We then evaluate on **patient-held-out cell typing** across twelve slides. The main findings:
 
-- The neighbor-derived estimate `mu` types **as well as** the cell's own embedding `m`.
-- The predictor's attention shows why: it uses about **seven of its thirty-six** context cells, at a
-  weighted mean distance **inside the half-width of the crop** the embedding was computed from. The
-  target's embedding is withheld from the context set, but not from the neighbors' image crops, which
-  overlap it.
-- The result holds at a wider crop, and on a second foundation model.
-- The equivalence holds only **on average**, and conceals two opposite effects. Grouping cells by how
-  many of their eight nearest neighbors share their type, the estimate is *worse* than the cell's own
-  embedding where no neighbor shares it and *better* where all of them do, turning over at about three
-  of eight. The uncertainty the predictor reports orders those regimes **without using labels**.
-
-So spatial context is informative about cell identity — and the foundation model's crop already spans
-the neighborhood the predictor reads, so reading it separately adds little.
+- The neighbor-derived estimate `mu` types cells **as well as** the cell's own embedding `m`
+  (macro-F1 0.619 against 0.616 in the main setting); in all eight readout and crop settings their
+  difference stays within ±0.011 at 90 percent confidence.
+- The predictor's attention is local: it uses about **seven of its thirty-six** context cells, at a
+  weighted mean distance inside the half-width of the crop the embedding was computed from. The
+  target's embedding is withheld from the context set, but not from the neighbors' image crops,
+  which overlap it.
+- A separately configured predictor at a wider crop, and a predictor trained on a second foundation
+  model, show the same null.
+- **Masking the target** out of its neighbors' crops lowers `mu` slightly but leaves its combination
+  with `m` unchanged, so the null is not an artifact of that overlap.
+- A **cell-only embedding**, computed from the same crop with the encoder allowed to see only the
+  patches covering the cell itself, types worse and knows no more about its neighbors' types than
+  the cell's own type implies; adding the masked `mu` back restores the typing score. The context is
+  already in the cell's own embedding: for H-optimus-0, at the resolution of three-class typing, the
+  answer to the title's question is yes.
+- The null holds only **on average**. Grouping cells by how many of their eight nearest neighbors
+  share their reference type (a diagnostic, since it reads labels), the estimate is worse than `m`
+  where none does, under both readouts; where all do, it is better under a nonlinear readout and not
+  detectably different under the linear one. The uncertainty the predictor reports is, on average,
+  higher at interfaces than in uniform tissue.
 
 ---
 
@@ -93,13 +101,16 @@ the neighborhood the predictor reads, so reading it separately adds little.
 
 ### 2.1 Result tables
 
-Per-fold and per-slide statistics behind every table in the paper. 224 files, TSV and JSON only,
-across 20 directories, one per run, named by date and analysis. The paper names the source directory
+Per-fold and per-slide statistics behind every table in the paper. 405 files, TSV and JSON only,
+across 25 directories, one per run, named by date and analysis. The paper names the source directory
 or file beneath each table, and those names are preserved here.
 
 **These are aggregate statistics.** They carry no patient-level information — no per-cell records, no
 coordinates, no image data, no clinical variables. Every number reported in the paper's tables can be
-recomputed from them.
+recomputed from them, as can the target-masking, cell-only-embedding and confidence-interval results
+in the text. `20261106_t2_release_supplement/` holds three small tables extracted from raw run outputs
+that have no other released form: context slots changed by the target mask, the per-fold
+label-supervised encoder-adaptation control, and the validation loss of the reduced-context arms.
 
 They do **not** permit rerunning the feature extraction, which needs the whole-slide images. The
 images and their matched spatial transcriptomics are patient-derived tissue held at a single
@@ -107,7 +118,7 @@ institution and are not publicly available.
 
 ### 2.2 Analysis code — `code/`
 
-The analysis and evaluation code that produced the tables above: 11 files, about 3,600 lines. The
+The analysis and evaluation code that produced the tables above: 22 files, about 5,500 lines. The
 set is not curated by hand — each released run names its producing script in its `PROVENANCE.json`,
 and `code/` is exactly that set plus the modules those scripts import.
 
@@ -124,6 +135,15 @@ and `code/` is exactly that set plus the modules those scripts import.
 | `apply_predictor_hd.py` | runs a trained predictor over every cell |
 | `celltype_probe_hd.py` | patient-out typing probe |
 | `predictor_mssc.py` | the predictor architecture |
+| `cache_masked_context.py` | re-embeds each neighbor with the target's patch tokens removed from attention |
+| `merge_maskctx_split.py` | merges the split typing outputs of the masking runs |
+| `cache_isolated_cell.py` | the cell-only embedding: attention limited to the cell's hull plus `r` microns |
+| `count_kept_neighbors.py` | neighbor cells inside the patches the cell-only embedding keeps |
+| `probe_nbr_composition.py` | ridge probe for the types of the eight nearest neighbors |
+| `pooling_rule_and_segmenter_geometry.py` | pooling-rule geometry and the two-segmenter agreement |
+| `camera_ready_delta_ci.py` | 90 percent confidence intervals and equivalence tests of `mu - m` |
+| `build_release_supplement.py` | builds `20261106_t2_release_supplement/` |
+| `pooler.py`, `pooler_grid.py`, `fm_loaders.py` | hull-weighted pooling of patch tokens and the encoder loaders |
 
 ⚠ **This code is not runnable as released, and does not claim to be.** It consumes cached
 foundation-model embeddings, label files and whole-slide images, none of which are in this release
@@ -177,8 +197,11 @@ The redacted fields still read `[redacted for anonymous review]`.
 3. **Compute-environment fields redacted** — job identifiers, cluster names, host, and tooling
    attribution keys now read `[redacted for anonymous review]`. Nothing that a number depends on was
    touched.
-4. **Internal working notes excluded.** The per-run `report.md` and `PAIRED_REPORT.md` files were
-   written for the authors and are not needed to reproduce any table, so they are not included.
+4. **Internal working notes excluded.** The per-run `report.md`, `PAIRED_REPORT.md` and other
+   Markdown notes were written for the authors and are not needed to reproduce any table, so they
+   are not included. Per-cell `.tsv.gz` dumps are also excluded; the `summary.tsv` beside them holds
+   every number the paper cites.
+5. **Cohort and site names** in relative paths were replaced by generic names.
 
 Substantive fields are unchanged: every metric, count, p-value, minimum-detectable-effect,
 hyperparameter and random seed is exactly as produced by the original run.
@@ -196,7 +219,11 @@ though the run was a plain twelve-fold leave-one-patient-out that trains on elev
 | **populated** (two slide lists) | within-fold leave-one-slide-out, **trains on 5** | the readout-ablation table only |
 
 This is why the readout-ablation table's absolute values are lower than the main typing table's, and
-why the paper says the two are not interchangeable. Where a run records the split explicitly — for
+why the paper says the two are not interchangeable.
+
+The `estimator_spec` string is a fixed label in the same way: logistic runs read `C=1.0`, but every
+typing TSV carries a `C` column, which records the value actually used (`0.01` for every number in
+the paper). Where a run records the split explicitly — for
 example `20260816_193412_t2_specmodel_fov112_all_readouts/PROVENANCE.json`, which reads
 `plain 12-fold LOPO, trains on 11` — that statement is authoritative.
 
@@ -208,7 +235,9 @@ means and the paired per-fold differences — together with the readout ablation
 comparison, the attention profile, the decision-margin quintiles, the neighborhood-homogeneity
 strata and their per-class breakdown, the pooled per-class comparison, the encoder-adaptation table,
 the representation-geometry values and the slide-composition table. All reproduce their published
-values.
+values. The camera-ready additions were checked the same way: the target-masking comparisons, the
+cell-only embedding at all three radii, the neighbor-composition probe, the confidence intervals and
+equivalence tests, the two-segmenter agreement and the three supplement tables.
 
 Two conventions to note when checking. Paired differences are computed **per fold and then
 averaged**, which is what the paper reports; differencing two rounded means from a `verdict_*.tsv`

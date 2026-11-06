@@ -1,0 +1,20 @@
+{
+  "generated": "2026-11-05T18:44:59",
+  "script": "scripts/analysis/probe_nbr_composition.py",
+  "args": {
+    "cache": "results/cache_fm_hd/hoptimus0",
+    "iso_root": "parks/p16_isocell",
+    "rings": "4,8,14",
+    "labels": "results/eval/gt_labels_hd12",
+    "cells": "results/masked_ctx/eval12_typing_cells.parquet",
+    "out": "results/reports/20261105_t2_isocell_typing/nbr_composition"
+  },
+  "inputs": {
+    "m": "results/cache_fm_hd/hoptimus0",
+    "m_iso_r4": "parks/p16_isocell/r4",
+    "m_iso_r8": "parks/p16_isocell/r8",
+    "m_iso_r14": "parks/p16_isocell/r14"
+  },
+  "n_cells": 144000,
+  "wall_s": 2224.519919157028
+}

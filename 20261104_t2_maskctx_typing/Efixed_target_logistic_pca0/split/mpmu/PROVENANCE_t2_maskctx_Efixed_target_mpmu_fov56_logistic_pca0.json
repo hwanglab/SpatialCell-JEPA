@@ -1,0 +1,40 @@
+{
+  "generated": "2026-11-05T01:17:21",
+  "cache": "results/cache_fm_hd/hoptimus0",
+  "mu_dir": "results/eval/predout_maskctx_Efixed_target",
+  "fold_lists": "",
+  "labels": "results/eval/gt_labels_hd12",
+  "fov": "fov56",
+  "k": 36,
+  "per_slide": 12000,
+  "slideid_n": 4000,
+  "seed": 0,
+  "slides": [
+    "Slide 5",
+    "Slide 3",
+    "Slide 7",
+    "Slide 8",
+    "Slide 1",
+    "Slide 6",
+    "Slide 11",
+    "Slide 4",
+    "Slide 12",
+    "Slide 2",
+    "Slide 10",
+    "Slide 9"
+  ],
+  "arms": {
+    "m+mu": [
+      "m",
+      "mu"
+    ]
+  },
+  "estimator": "logistic",
+  "estimator_spec": "LogisticRegression multinomial C=1.0 class_weight=balanced max_iter=300",
+  "all_hyperparameters_fixed_not_tuned": true,
+  "slideid_estimator": "logistic (ALWAYS, independent of --estimator)",
+  "random30": null,
+  "typing_split": "WITHIN-FOLD leave-one-slide-out (trains on 5) \u2014 avoids the indirect leak described in Trap 1",
+  "slideid_split": "random 70/30 over cells, 12-way, chance 0.0833, LOWER is better",
+  "wall_s": 8873.0
+}

@@ -1,0 +1,569 @@
+{
+  "config": {
+    "slides": [
+      "Slide 6",
+      "Slide 12",
+      "Slide 2"
+    ],
+    "hoverfast_root": "Datasets/eval_cohort/processed_data/cell_seg_hoverfast",
+    "cellvit_root": "Datasets/cohorts/processed_data/cell_seg_classificition/eval_cohort/CellViT-Virchow-x40",
+    "gt_root": "results/eval/gt_labels",
+    "n_roi": 12,
+    "roi_px": 2048,
+    "match_tol_um": 3.0,
+    "seed": 0,
+    "out": "results/reports/20260802_220106_t2_pooling_and_segmenter_geometry"
+  },
+  "slides": {
+    "Slide 6": {
+      "detection": {
+        "n_hoverfast": 9046,
+        "n_cellvit": 9740,
+        "n_matched": 8073,
+        "hoverfast_only": 973,
+        "cellvit_only": 1667,
+        "match_tol_um": 3.0,
+        "median_match_dist_um": 0.35666466043049455
+      },
+      "arms": {
+        "poly_frac": {
+          "n_cells": 9046,
+          "tokens_per_cell_median": 5.0,
+          "sum_w_median": 1.637755036354065,
+          "contamination_mean": 0.14461643928586143,
+          "contamination_median": 0.0,
+          "empty_rate": 0.0
+        },
+        "poly_bin": {
+          "n_cells": 9046,
+          "tokens_per_cell_median": 5.0,
+          "sum_w_median": 5.0,
+          "contamination_mean": 0.18323606704926954,
+          "contamination_median": 0.0,
+          "empty_rate": 0.0
+        },
+        "poly_center": {
+          "n_cells": 8363,
+          "tokens_per_cell_median": 2.0,
+          "sum_w_median": 2.0,
+          "contamination_mean": 0.004464107777504178,
+          "contamination_median": 0.0,
+          "empty_rate": 0.07550298474463857
+        },
+        "hull_frac": {
+          "n_cells": 9046,
+          "tokens_per_cell_median": 6.0,
+          "sum_w_median": 1.6683674454689026,
+          "contamination_mean": 0.1476572125615555,
+          "contamination_median": 0.0,
+          "empty_rate": 0.0
+        },
+        "hull_bin": {
+          "n_cells": 9046,
+          "tokens_per_cell_median": 6.0,
+          "sum_w_median": 6.0,
+          "contamination_mean": 0.18520938293901715,
+          "contamination_median": 0.0,
+          "empty_rate": 0.0
+        },
+        "hull_center": {
+          "n_cells": 8396,
+          "tokens_per_cell_median": 2.0,
+          "sum_w_median": 2.0,
+          "contamination_mean": 0.006237380623661262,
+          "contamination_median": 0.0,
+          "empty_rate": 0.0718549635197877
+        },
+        "bbox_frac": {
+          "n_cells": 9046,
+          "tokens_per_cell_median": 6.0,
+          "sum_w_median": 2.3877551555633545,
+          "contamination_mean": 0.19738321017864954,
+          "contamination_median": 0.043301284313201904,
+          "empty_rate": 0.0
+        },
+        "bbox_bin": {
+          "n_cells": 9046,
+          "tokens_per_cell_median": 6.0,
+          "sum_w_median": 6.0,
+          "contamination_mean": 0.22359754293625786,
+          "contamination_median": 0.125,
+          "empty_rate": 0.0
+        },
+        "bbox_center": {
+          "n_cells": 8787,
+          "tokens_per_cell_median": 2.0,
+          "sum_w_median": 2.0,
+          "contamination_mean": 0.042076204983657224,
+          "contamination_median": 0.0,
+          "empty_rate": 0.028631439310192297
+        }
+      },
+      "segmenter_sensitivity": {
+        "poly_frac": {
+          "n": 8073,
+          "cos_mean": 0.9646630560440381,
+          "cos_median": 0.9927284014017713,
+          "frac_identical": 0.012139229530533879,
+          "frac_below_0p9": 0.11148272017837235
+        },
+        "poly_bin": {
+          "n": 8073,
+          "cos_mean": 0.9140899951112523,
+          "cos_median": 0.9999999999999998,
+          "frac_identical": 0.5187662578966927,
+          "frac_below_0p9": 0.37061810974854453
+        },
+        "poly_center": {
+          "n": 7086,
+          "cos_mean": 0.898063738413903,
+          "cos_median": 0.9999999999999998,
+          "frac_identical": 0.6398532317245272,
+          "frac_below_0p9": 0.3577476714648603
+        },
+        "hull_frac": {
+          "n": 8073,
+          "cos_mean": 0.9642586015550821,
+          "cos_median": 0.9926934438741857,
+          "frac_identical": 0.013130187043230521,
+          "frac_below_0p9": 0.1130930261365044
+        },
+        "hull_bin": {
+          "n": 8073,
+          "cos_mean": 0.9136411409160812,
+          "cos_median": 0.9999999999999998,
+          "frac_identical": 0.5185185185185185,
+          "frac_below_0p9": 0.36913167347949954
+        },
+        "hull_center": {
+          "n": 7112,
+          "cos_mean": 0.8953739213815037,
+          "cos_median": 0.9999999999999998,
+          "frac_identical": 0.6318897637795275,
+          "frac_below_0p9": 0.36515748031496065
+        },
+        "bbox_frac": {
+          "n": 8073,
+          "cos_mean": 0.9585989627137774,
+          "cos_median": 0.9897674688363314,
+          "frac_identical": 0.03171064040629258,
+          "frac_below_0p9": 0.12746191007060573
+        },
+        "bbox_bin": {
+          "n": 8073,
+          "cos_mean": 0.9081099798121927,
+          "cos_median": 1.0,
+          "frac_identical": 0.6171187910318345,
+          "frac_below_0p9": 0.3825095999009043
+        },
+        "bbox_center": {
+          "n": 7612,
+          "cos_mean": 0.8849612178093375,
+          "cos_median": 0.9999999999999998,
+          "frac_identical": 0.6372832369942196,
+          "frac_below_0p9": 0.3627167630057804
+        }
+      },
+      "cross_arm": {
+        "poly_frac": {
+          "cos_median_vs_hull_frac": 0.9999489826475139
+        },
+        "poly_bin": {
+          "cos_median_vs_hull_frac": 0.7935309306982579
+        },
+        "poly_center": {
+          "cos_median_vs_hull_frac": 0.9176907897288233
+        },
+        "hull_bin": {
+          "cos_median_vs_hull_frac": 0.7907302520780308
+        },
+        "hull_center": {
+          "cos_median_vs_hull_frac": 0.921170594110275
+        },
+        "bbox_frac": {
+          "cos_median_vs_hull_frac": 0.9806508431152661
+        },
+        "bbox_bin": {
+          "cos_median_vs_hull_frac": 0.7551959876295558
+        },
+        "bbox_center": {
+          "cos_median_vs_hull_frac": 0.9128517648072362
+        }
+      },
+      "hull_inflation": {
+        "hull_over_poly_median": 1.0384615384615385,
+        "bbox_over_poly_median": 1.3865372834140532,
+        "by_class": null,
+        "gt_note": "GT at results/eval/gt_labels/Slide 6.parquet; per-class join needs cache_idx alignment (ROI-subsampled cells are not cache-ordered) -- deferred to the full run, reported unjoined here."
+      },
+      "n_rois": 12
+    },
+    "Slide 12": {
+      "detection": {
+        "n_hoverfast": 17040,
+        "n_cellvit": 18259,
+        "n_matched": 15571,
+        "hoverfast_only": 1469,
+        "cellvit_only": 2688,
+        "match_tol_um": 3.0,
+        "median_match_dist_um": 0.35666466043049455
+      },
+      "arms": {
+        "poly_frac": {
+          "n_cells": 17040,
+          "tokens_per_cell_median": 6.0,
+          "sum_w_median": 1.770408034324646,
+          "contamination_mean": 0.21277068570935528,
+          "contamination_median": 0.09963950887322426,
+          "empty_rate": 0.0
+        },
+        "poly_bin": {
+          "n_cells": 17040,
+          "tokens_per_cell_median": 6.0,
+          "sum_w_median": 6.0,
+          "contamination_mean": 0.272198460469276,
+          "contamination_median": 0.25,
+          "empty_rate": 0.0
+        },
+        "poly_center": {
+          "n_cells": 15919,
+          "tokens_per_cell_median": 2.0,
+          "sum_w_median": 2.0,
+          "contamination_mean": 0.004988797454088431,
+          "contamination_median": 0.0,
+          "empty_rate": 0.06578638497652578
+        },
+        "hull_frac": {
+          "n_cells": 17040,
+          "tokens_per_cell_median": 6.0,
+          "sum_w_median": 1.8010203838348389,
+          "contamination_mean": 0.21768150722321783,
+          "contamination_median": 0.10349525883793831,
+          "empty_rate": 0.0
+        },
+        "hull_bin": {
+          "n_cells": 17040,
+          "tokens_per_cell_median": 6.0,
+          "sum_w_median": 6.0,
+          "contamination_mean": 0.27578601541977044,
+          "contamination_median": 0.25,
+          "empty_rate": 0.0
+        },
+        "hull_center": {
+          "n_cells": 15975,
+          "tokens_per_cell_median": 2.0,
+          "sum_w_median": 2.0,
+          "contamination_mean": 0.007399284611099016,
+          "contamination_median": 0.0,
+          "empty_rate": 0.0625
+        },
+        "bbox_frac": {
+          "n_cells": 17040,
+          "tokens_per_cell_median": 6.0,
+          "sum_w_median": 2.515306234359741,
+          "contamination_mean": 0.2889857738159385,
+          "contamination_median": 0.20126331597566605,
+          "empty_rate": 0.0
+        },
+        "bbox_bin": {
+          "n_cells": 17040,
+          "tokens_per_cell_median": 6.0,
+          "sum_w_median": 6.0,
+          "contamination_mean": 0.3301782846208137,
+          "contamination_median": 0.3333333432674408,
+          "empty_rate": 0.0
+        },
+        "bbox_center": {
+          "n_cells": 16624,
+          "tokens_per_cell_median": 2.0,
+          "sum_w_median": 2.0,
+          "contamination_mean": 0.055333093456570795,
+          "contamination_median": 0.0,
+          "empty_rate": 0.024413145539906145
+        }
+      },
+      "segmenter_sensitivity": {
+        "poly_frac": {
+          "n": 15571,
+          "cos_mean": 0.9675906930223322,
+          "cos_median": 0.9937636955978855,
+          "frac_identical": 0.013037056065763278,
+          "frac_below_0p9": 0.10468178023248347
+        },
+        "poly_bin": {
+          "n": 15571,
+          "cos_mean": 0.9226166794051898,
+          "cos_median": 0.9999999999999998,
+          "frac_identical": 0.5419690450195876,
+          "frac_below_0p9": 0.3423672211161775
+        },
+        "poly_center": {
+          "n": 14059,
+          "cos_mean": 0.9041596884562074,
+          "cos_median": 0.9999999999999998,
+          "frac_identical": 0.6498328472864358,
+          "frac_below_0p9": 0.3465395831851483
+        },
+        "hull_frac": {
+          "n": 15571,
+          "cos_mean": 0.967361259579011,
+          "cos_median": 0.9937697421038862,
+          "frac_identical": 0.013615053625329138,
+          "frac_below_0p9": 0.10660843876436966
+        },
+        "hull_bin": {
+          "n": 15571,
+          "cos_mean": 0.9221833067703843,
+          "cos_median": 0.9999999999999998,
+          "frac_identical": 0.5433819279429709,
+          "frac_below_0p9": 0.34223877721405177
+        },
+        "hull_center": {
+          "n": 14112,
+          "cos_mean": 0.9025810293913785,
+          "cos_median": 0.9999999999999998,
+          "frac_identical": 0.643140589569161,
+          "frac_below_0p9": 0.35267857142857145
+        },
+        "bbox_frac": {
+          "n": 15571,
+          "cos_mean": 0.9626613823121963,
+          "cos_median": 0.9911309187505463,
+          "frac_identical": 0.03956072185472995,
+          "frac_below_0p9": 0.11797572410249824
+        },
+        "bbox_bin": {
+          "n": 15571,
+          "cos_mean": 0.9171119878874651,
+          "cos_median": 1.0,
+          "frac_identical": 0.6417699569712928,
+          "frac_below_0p9": 0.35765204546914137
+        },
+        "bbox_center": {
+          "n": 14907,
+          "cos_mean": 0.8932364116480572,
+          "cos_median": 0.9999999999999998,
+          "frac_identical": 0.6548601328235057,
+          "frac_below_0p9": 0.3450057020191856
+        }
+      },
+      "cross_arm": {
+        "poly_frac": {
+          "cos_median_vs_hull_frac": 0.9999512959961654
+        },
+        "poly_bin": {
+          "cos_median_vs_hull_frac": 0.7910614940105968
+        },
+        "poly_center": {
+          "cos_median_vs_hull_frac": 0.9183340236665454
+        },
+        "hull_bin": {
+          "cos_median_vs_hull_frac": 0.7886161545422572
+        },
+        "hull_center": {
+          "cos_median_vs_hull_frac": 0.9214704077837246
+        },
+        "bbox_frac": {
+          "cos_median_vs_hull_frac": 0.9806025228367352
+        },
+        "bbox_bin": {
+          "cos_median_vs_hull_frac": 0.7529540846323927
+        },
+        "bbox_center": {
+          "cos_median_vs_hull_frac": 0.9112889547159144
+        }
+      },
+      "hull_inflation": {
+        "hull_over_poly_median": 1.0359116022099448,
+        "bbox_over_poly_median": 1.3819742489270386,
+        "by_class": null,
+        "gt_note": "GT at results/eval/gt_labels/Slide 12.parquet; per-class join needs cache_idx alignment (ROI-subsampled cells are not cache-ordered) -- deferred to the full run, reported unjoined here."
+      },
+      "n_rois": 12
+    },
+    "Slide 2": {
+      "detection": {
+        "n_hoverfast": 19912,
+        "n_cellvit": 19845,
+        "n_matched": 17826,
+        "hoverfast_only": 2086,
+        "cellvit_only": 2019,
+        "match_tol_um": 3.0,
+        "median_match_dist_um": 0.2522
+      },
+      "arms": {
+        "poly_frac": {
+          "n_cells": 19912,
+          "tokens_per_cell_median": 6.0,
+          "sum_w_median": 2.2346938848495483,
+          "contamination_mean": 0.20683525377246445,
+          "contamination_median": 0.125,
+          "empty_rate": 0.0
+        },
+        "poly_bin": {
+          "n_cells": 19912,
+          "tokens_per_cell_median": 6.0,
+          "sum_w_median": 6.0,
+          "contamination_mean": 0.28244404118959354,
+          "contamination_median": 0.25,
+          "empty_rate": 0.0
+        },
+        "poly_center": {
+          "n_cells": 18943,
+          "tokens_per_cell_median": 2.0,
+          "sum_w_median": 2.0,
+          "contamination_mean": 0.005138221683116055,
+          "contamination_median": 0.0,
+          "empty_rate": 0.048664122137404564
+        },
+        "hull_frac": {
+          "n_cells": 19912,
+          "tokens_per_cell_median": 6.0,
+          "sum_w_median": 2.2857143878936768,
+          "contamination_mean": 0.2119676765086585,
+          "contamination_median": 0.12873594462871552,
+          "empty_rate": 0.0
+        },
+        "hull_bin": {
+          "n_cells": 19912,
+          "tokens_per_cell_median": 6.0,
+          "sum_w_median": 6.0,
+          "contamination_mean": 0.28581183467415044,
+          "contamination_median": 0.25,
+          "empty_rate": 0.0
+        },
+        "hull_center": {
+          "n_cells": 19001,
+          "tokens_per_cell_median": 2.0,
+          "sum_w_median": 2.0,
+          "contamination_mean": 0.007595924381083372,
+          "contamination_median": 0.0,
+          "empty_rate": 0.04575130574527919
+        },
+        "bbox_frac": {
+          "n_cells": 19912,
+          "tokens_per_cell_median": 6.0,
+          "sum_w_median": 3.2857143878936768,
+          "contamination_mean": 0.3021376203762436,
+          "contamination_median": 0.2440159171819687,
+          "empty_rate": 0.0
+        },
+        "bbox_bin": {
+          "n_cells": 19912,
+          "tokens_per_cell_median": 6.0,
+          "sum_w_median": 6.0,
+          "contamination_mean": 0.3528139388536516,
+          "contamination_median": 0.3333333432674408,
+          "empty_rate": 0.0
+        },
+        "bbox_center": {
+          "n_cells": 19549,
+          "tokens_per_cell_median": 4.0,
+          "sum_w_median": 4.0,
+          "contamination_mean": 0.06990744116072417,
+          "contamination_median": 0.0,
+          "empty_rate": 0.018230212936922507
+        }
+      },
+      "segmenter_sensitivity": {
+        "poly_frac": {
+          "n": 17826,
+          "cos_mean": 0.972056999575645,
+          "cos_median": 0.9949403380757089,
+          "frac_identical": 0.007180522831818692,
+          "frac_below_0p9": 0.08880287220913273
+        },
+        "poly_bin": {
+          "n": 17826,
+          "cos_mean": 0.9314227128730528,
+          "cos_median": 0.9999999999999998,
+          "frac_identical": 0.5298440480197464,
+          "frac_below_0p9": 0.2942331426006956
+        },
+        "poly_center": {
+          "n": 16690,
+          "cos_mean": 0.9123546300883374,
+          "cos_median": 0.9999999999999998,
+          "frac_identical": 0.6202516476932295,
+          "frac_below_0p9": 0.3467944877171959
+        },
+        "hull_frac": {
+          "n": 17826,
+          "cos_mean": 0.9720357533879053,
+          "cos_median": 0.9948991877990305,
+          "frac_identical": 0.007517109839560193,
+          "frac_below_0p9": 0.09003702457085157
+        },
+        "hull_bin": {
+          "n": 17826,
+          "cos_mean": 0.9309684827505055,
+          "cos_median": 0.9999999999999998,
+          "frac_identical": 0.5292830696735106,
+          "frac_below_0p9": 0.2945136317738135
+        },
+        "hull_center": {
+          "n": 16744,
+          "cos_mean": 0.9110331518226353,
+          "cos_median": 0.9999999999999998,
+          "frac_identical": 0.6149665551839465,
+          "frac_below_0p9": 0.3506927854753942
+        },
+        "bbox_frac": {
+          "n": 17826,
+          "cos_mean": 0.9685384356297418,
+          "cos_median": 0.9928611846230633,
+          "frac_identical": 0.02698305845394368,
+          "frac_below_0p9": 0.09665656905643442
+        },
+        "bbox_bin": {
+          "n": 17826,
+          "cos_mean": 0.9264387947758947,
+          "cos_median": 1.0,
+          "frac_identical": 0.6546056322225962,
+          "frac_below_0p9": 0.3450577807696623
+        },
+        "bbox_center": {
+          "n": 17316,
+          "cos_mean": 0.9053926110320616,
+          "cos_median": 0.9999999999999998,
+          "frac_identical": 0.6654539154539154,
+          "frac_below_0p9": 0.33454608454608453
+        }
+      },
+      "cross_arm": {
+        "poly_frac": {
+          "cos_median_vs_hull_frac": 0.9999432016950214
+        },
+        "poly_bin": {
+          "cos_median_vs_hull_frac": 0.7975777722190402
+        },
+        "poly_center": {
+          "cos_median_vs_hull_frac": 0.9257942121102405
+        },
+        "hull_bin": {
+          "cos_median_vs_hull_frac": 0.7952031542220143
+        },
+        "hull_center": {
+          "cos_median_vs_hull_frac": 0.9283305378807788
+        },
+        "bbox_frac": {
+          "cos_median_vs_hull_frac": 0.9757505966395947
+        },
+        "bbox_bin": {
+          "cos_median_vs_hull_frac": 0.7560768316947485
+        },
+        "bbox_center": {
+          "cos_median_vs_hull_frac": 0.9121360430565613
+        }
+      },
+      "hull_inflation": {
+        "hull_over_poly_median": 1.0299804750197326,
+        "bbox_over_poly_median": 1.3578072711544154,
+        "by_class": null,
+        "gt_note": "GT at results/eval/gt_labels/Slide 2.parquet; per-class join needs cache_idx alignment (ROI-subsampled cells are not cache-ordered) -- deferred to the full run, reported unjoined here."
+      },
+      "n_rois": 12
+    }
+  },
+  "generated_utc": "20260802_220526"
+}

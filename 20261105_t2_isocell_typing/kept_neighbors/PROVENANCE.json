@@ -1,0 +1,67 @@
+{
+  "task": "P16 T2 kept-neighbour counts \u2014 summary",
+  "generated_utc": "2026-11-06T04:49:23.843615+00:00",
+  "script": "scripts/analysis/count_kept_neighbors.py",
+  "inputs": [
+    {
+      "path": "results/reports/20261105_t2_isocell_typing/kept_neighbors/Slide 5.tsv.gz",
+      "size": 327304,
+      "mtime": "2026-11-06T04:47:13.503375+00:00"
+    },
+    {
+      "path": "results/reports/20261105_t2_isocell_typing/kept_neighbors/Slide 3.tsv.gz",
+      "size": 322179,
+      "mtime": "2026-11-06T04:47:31.140486+00:00"
+    },
+    {
+      "path": "results/reports/20261105_t2_isocell_typing/kept_neighbors/Slide 7.tsv.gz",
+      "size": 318264,
+      "mtime": "2026-11-06T04:46:47.735881+00:00"
+    },
+    {
+      "path": "results/reports/20261105_t2_isocell_typing/kept_neighbors/Slide 8.tsv.gz",
+      "size": 320289,
+      "mtime": "2026-11-06T04:47:51.787506+00:00"
+    },
+    {
+      "path": "results/reports/20261105_t2_isocell_typing/kept_neighbors/Slide 1.tsv.gz",
+      "size": 325526,
+      "mtime": "2026-11-06T04:48:03.822491+00:00"
+    },
+    {
+      "path": "results/reports/20261105_t2_isocell_typing/kept_neighbors/Slide 6.tsv.gz",
+      "size": 308163,
+      "mtime": "2026-11-06T04:46:23.285697+00:00"
+    },
+    {
+      "path": "results/reports/20261105_t2_isocell_typing/kept_neighbors/Slide 11.tsv.gz",
+      "size": 326348,
+      "mtime": "2026-11-06T04:48:09.157520+00:00"
+    },
+    {
+      "path": "results/reports/20261105_t2_isocell_typing/kept_neighbors/Slide 4.tsv.gz",
+      "size": 323300,
+      "mtime": "2026-11-06T04:49:16.304415+00:00"
+    },
+    {
+      "path": "results/reports/20261105_t2_isocell_typing/kept_neighbors/Slide 12.tsv.gz",
+      "size": 319659,
+      "mtime": "2026-11-06T04:46:50.391321+00:00"
+    },
+    {
+      "path": "results/reports/20261105_t2_isocell_typing/kept_neighbors/Slide 2.tsv.gz",
+      "size": 314983,
+      "mtime": "2026-11-06T04:46:50.073288+00:00"
+    },
+    {
+      "path": "results/reports/20261105_t2_isocell_typing/kept_neighbors/Slide 10.tsv.gz",
+      "size": 316787,
+      "mtime": "2026-11-06T04:46:58.339004+00:00"
+    },
+    {
+      "path": "results/reports/20261105_t2_isocell_typing/kept_neighbors/Slide 9.tsv.gz",
+      "size": 323629,
+      "mtime": "2026-11-06T04:47:44.536452+00:00"
+    }
+  ]
+}
