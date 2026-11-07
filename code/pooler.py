@@ -23,11 +23,7 @@ EMBED = 1280
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406], np.float32)
 IMAGENET_STD = np.array([0.229, 0.224, 0.225], np.float32)
 
-# Maintained Virchow2 weights (P1 canonical; used by GCICI_outcome_prediction scripts). Offline, no HF download.
-# Env-overridable (added 2026-08-05) so this module runs off-OSC, e.g. on the desktop where the
-# byte-identical weights live on the NAS at
-#   /mnt/hwangt_share/lab_members/parks/references/models/Virchow2/model.safetensors
-# (verified same size 2,525,001,112 B = same paige-ai/Virchow2). Default is UNCHANGED.
+# Virchow2 weights (paige-ai/Virchow2), loaded offline; the path is overridable by environment variable.
 VIRCHOW2_WEIGHTS = os.environ.get(
     "P16_VIRCHOW2_WEIGHTS",
     "wsi_foundation_models/Virchow2/model.safetensors")

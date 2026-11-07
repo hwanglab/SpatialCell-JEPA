@@ -1,6 +1,6 @@
 {
   "generated": "2026-11-05T18:32:19",
-  "cache": "parks/p16_isocell/r8",
+  "cache": "cache/p16_isocell/r8",
   "mu_dir": "results/eval/predout_maskctx_R1_target",
   "fold_lists": "",
   "labels": "results/eval/gt_labels_hd12",

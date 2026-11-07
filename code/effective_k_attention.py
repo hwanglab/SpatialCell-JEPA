@@ -85,7 +85,7 @@ def main():
     ap.add_argument('--mpp', type=float, default=None,
                     help="Microns per pixel. None => apply_predictor_hd's 0.2522 default, which is "
                          "what every run to 2026-08-22 used. MUST be passed for any cache "
-                         "that is not ~0.2522: the G4X GN-133 cache is 0.3125, and every distance "
+                         "that is not ~0.2522: the second-assay cache is 0.3125, and every distance "
                          "this script reports (attention-weighted radius, 1-NN spacing, "
                          "mass_within_nearest_K) is in um, so a wrong value rescales all of them. "
                          "Gated against the cache meta.json by resolve_mpp -- >1% is fatal.")

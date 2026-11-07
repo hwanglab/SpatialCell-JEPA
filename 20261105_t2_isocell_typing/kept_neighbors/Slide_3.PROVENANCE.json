@@ -20,9 +20,7 @@
   "n_targets": 12000,
   "inputs": {
     "slide": {
-      "path": "Datasets/eval_cohort/raw_data/HE_images/Batch2_Re/Slide 3.svs",
-      "size": 836682323,
-      "mtime": "2026-01-07T19:39:09.840216+00:00"
+      "path": "Datasets/eval_cohort/raw_data/HE_images/Batch2_Re/Slide 3.svs"
     },
     "cache_cells": {
       "path": "results/cache_fm_hd/hoptimus0/Slide 3/fov56/cells.npz",

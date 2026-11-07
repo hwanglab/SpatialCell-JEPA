@@ -50,11 +50,11 @@ def resolve_mpp(cache_root, slide, fine_fov, mpp=None):
     ⚠⚠ WHY THIS EXISTS (2026-08-23). This module hardcoded MPP = 0.2522 while `train_mssc.py:55-61`
     reads the per-slide value out of the cache's `meta.json`. On this cohort that is a 0.12 % disagreement
     (8 of 12 eval slides are 0.2525) -- negligible, and it is why nothing caught it for months.
-    On the G4X GN-133 cache the true value is **0.3125**, so apply would have fed the predictor
+    On the second-assay cache the true value is **0.3125**, so apply would have fed the predictor
     coordinates scaled by 0.2522/0.3125 = 0.8070 -- a 19.3 % shrink, with the positional encoding
     seeing every neighbour as ~19 % nearer than it did in training. `--pe-frame target` re-centres
     the coordinates but does NOT rescale them, so it does not save it. There is no error, no crash
-    and no gate downstream: the run produces a complete, plausible, wrong result. The G4X applies
+    and no gate downstream: the run produces a complete, plausible, wrong result. The second-assay applies
     were only spared because an unrelated `--own-knn` argparse error killed them first.
 
     CONTRACT
@@ -66,7 +66,7 @@ def resolve_mpp(cache_root, slide, fine_fov, mpp=None):
         already on disk are left alone, and the mismatch is made VISIBLE rather than fixed silently.
       * meta.json absent   -> no gate possible; proceed on the value in hand (older caches predate it).
 
-    Raises on a >1 % disagreement, which is exactly the G4X case.
+    Raises on a >1 % disagreement, which is exactly the second-assay case.
     """
     used = float(MPP if mpp is None else mpp)
     meta_p = os.path.join(cache_root, slide, f"fov{fine_fov}", "meta.json")
@@ -350,8 +350,8 @@ def main():
                     help="Microns per pixel for centroid_xy. DEFAULT None => 0.2522, which keeps "
                          "every pre-2026-08-23 caller bit-identical. The value in use is ALWAYS "
                          "gated against the cache's own meta.json: >0.1%% prints a warning, >1%% is "
-                         "fatal. Pass it explicitly for any cache that is not ~0.2522 -- the G4X "
-                         "GN-133 cache is 0.3125, where the old hardcoded constant was 19.3%% off "
+                         "fatal. Pass it explicitly for any cache that is not ~0.2522 -- the second-assay "
+                         "second-assay cache is 0.3125, where the old hardcoded constant was 19.3%% off "
                          "and would have mis-scaled every coordinate the PE sees. Recorded in "
                          "PROVENANCE as `mpp_arg`.")
     ap.add_argument("--batch", type=int, default=4096)

@@ -20,9 +20,7 @@
   "n_targets": 12000,
   "inputs": {
     "slide": {
-      "path": "Datasets/eval_cohort/raw_data/HE_images/HE_for_VisiumHD/Slide 6.svs",
-      "size": 2008830007,
-      "mtime": "2025-12-10T20:30:55.723925+00:00"
+      "path": "Datasets/eval_cohort/raw_data/HE_images/HE_for_VisiumHD/Slide 6.svs"
     },
     "cache_cells": {
       "path": "results/cache_fm_hd/hoptimus0/Slide 6/fov56/cells.npz",

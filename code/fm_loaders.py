@@ -10,7 +10,7 @@ patch tokens under each cell's convex hull. The load-bearing per-FM facts are:
 Configs verified against (a) on-disk config.json and (b) the Trident loader
 (polymath/repos/mahmoodlab__trident/trident/patch_encoder_models/load.py), 2026-07-24.
 
-gigapath was ABSENT until 2026-09-20; `[user]` lifted the exclusion for the GN133 encoder ablation.
+gigapath was ABSENT until 2026-09-20; `[user]` lifted the exclusion for a second-assay encoder ablation.
 ⚠ The old reason ("patch-16 breaks the patch-14 hull raster") was WRONG: `hull_weights_tile` already
 takes `patch` as an argument and rasterizes in `patch`-sized blocks, so it is block-size agnostic.
 What patch-16 really changes is TILE QUANTIZATION, `tile_px = round(fov_um/mpp/patch)*patch`:

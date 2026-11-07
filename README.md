@@ -4,7 +4,7 @@
 
 Accompanies *SpatialCell-JEPA: do pathology foundation-model cell embeddings already encode neighborhood context?* Park et al., Interpretability for Discovery workshop, NeurIPS 2026.
 
-**License:** code (`code/`) under the [MIT License](LICENSE); result tables under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+**License:** code (`code/`) under the [MIT License](LICENSE); result tables under [CC BY 4.0](LICENSE-DATA).
 
 This repository accompanies our recent work, **SpatialCell-JEPA**, which asks whether pathology
 foundation-model cell embeddings already encode their neighborhood context. It borrows the prediction objective of
@@ -118,8 +118,10 @@ institution and are not publicly available.
 ### 2.2 Analysis code — `code/`
 
 The analysis and evaluation code that produced the tables above: 24 files, about 5,600 lines. The
-set is not curated by hand — each released run names its producing script in its `PROVENANCE.json`,
-and `code/` is exactly that set plus the modules those scripts import.
+set is the scripts that produced the released tables, as far as each run's `PROVENANCE.json`
+records them, plus the modules those scripts import. Some runs do not name their script, and two
+producing scripts are not included (`k12_cap22_paired_test.py`, `positive_control_margin_strata.py`);
+the margin-stratifier rows they produced are also computed by `neighborhood_homogeneity_strata.py`.
 
 | file | role |
 |---|---|
@@ -223,8 +225,8 @@ This is why the readout-ablation table's absolute values are lower than the main
 why the paper says the two are not interchangeable.
 
 The `estimator_spec` string is a fixed label in the same way: logistic runs read `C=1.0`, but every
-typing TSV carries a `C` column, which records the value actually used (`0.01` for every number in
-the paper). Where a run records the split explicitly — for
+typing TSV carries a `C` column, which records the value actually used (`0.01` for every number taken from a typing TSV; Appendices D and E of the paper use `C = 1.0`, as
+stated there). Where a run records the split explicitly — for
 example `20260816_193412_t2_specmodel_fov112_all_readouts/PROVENANCE.json`, which reads
 `plain 12-fold LOPO, trains on 11` — that statement is authoritative.
 
@@ -253,7 +255,8 @@ paper's form.
 ## 7. Dependencies
 
 Python 3 with numpy, pandas, scipy, scikit-learn, PyTorch, scikit-image, openslide-python,
-safetensors and Pillow. Reading the result tables needs only pandas.
+safetensors, timm, Pillow and pyarrow. Reading the result tables needs only pandas (and pyarrow for
+the few `.parquet` inputs).
 
 ## 8. Citation
 

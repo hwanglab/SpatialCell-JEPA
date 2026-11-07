@@ -17,11 +17,11 @@ WHY THIS EXISTS
   3. val_nll_k12_cap22.tsv -- validation NLL of the control, K_c=12 and 22 um cap predictors: mean of the
      last 3 epochs (the margin rule's statistic, 20260818_t2b_depth_screen), final epoch (the evaluated
      weights) and best epoch
-     (paper App context: +2.9 and +228.4 against the control).
+     (the paper's Appendix H prints the last-3 deltas, +3.3 and +401.6, against the control).
      Source: results/mssc_corpus31_ownknn_xattn_fov56_d2_perel{,_k12,_cap22}/train_history.json.
 
-  Output goes to results/reports/<stamp>_t2_release_supplement/ with raw slide IDs; the release
-  copy is de-identified by stage_data_release.py like every other staged directory.
+  Output goes to results/reports/<stamp>_t2_release_supplement/ with raw slide IDs; the released
+  copy was de-identified before release like every other directory.
 
 Usage
   python3 scripts/release/build_release_supplement.py
