@@ -1,4 +1,4 @@
-arm	best_val_nll	delta_vs_ctrl
-ctrl	-1115.571	+0.000
-k12	-1112.716	+2.855
-cap22	-887.160	+228.411
+arm	val_nll_last3_mean	delta_last3	val_nll_final	delta_final	val_nll_best	delta_best
+ctrl	-1114.351	+0.000	-1113.155	+0.000	-1115.571	+0.000
+k12	-1111.050	+3.301	-1110.214	+2.941	-1112.716	+2.855
+cap22	-712.794	+401.557	-715.986	+397.168	-887.160	+228.411

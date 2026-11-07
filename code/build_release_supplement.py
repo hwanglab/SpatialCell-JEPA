@@ -14,7 +14,9 @@ WHY THIS EXISTS
   2. lora_supervised_control_per_fold.tsv -- label-supervised LoRA minus head-only, per fold
      (paper: "+0.0023 (7 of 12 folds, p = 0.57)", Sec 4 / App lora).
      Source: results/t6_train/SUP_{lora,head}_<slide>/test.json, test_all_macro_f1.
-  3. val_nll_k12_cap22.tsv -- best validation NLL of the control, K_c=12 and 22 um cap predictors
+  3. val_nll_k12_cap22.tsv -- validation NLL of the control, K_c=12 and 22 um cap predictors: mean of the
+     last 3 epochs (the margin rule's statistic, 20260818_t2b_depth_screen), final epoch (the evaluated
+     weights) and best epoch
      (paper App context: +2.9 and +228.4 against the control).
      Source: results/mssc_corpus31_ownknn_xattn_fov56_d2_perel{,_k12,_cap22}/train_history.json.
 
@@ -75,25 +77,31 @@ def main():
         "held_out_slide\tlora_macro_f1\thead_macro_f1\tdelta\n" + "\n".join(rows)
         + f"\nMEAN\t\t\t{mean_d:+.4f}\nfolds_up\t\t\t{n_up}/12\nwilcoxon_p\t\t\t{pval:.4f}\n")
 
-    # 3. validation NLL, K_c=12 and 22 um cap
+    # 3. validation NLL, K_c=12 and 22 um cap. The non-inferiority margin (8.108) was defined on the
+    #    mean of the last 3 epochs (20260818_t2b_depth_screen PROVENANCE `metric`), and the evaluated
+    #    weights are the final epoch, so those two are reported; best epoch kept for reference.
     base = "mssc_corpus31_ownknn_xattn_fov56_d2_perel"
-    best = {}
+    stat = {}
     for arm, suf in [("ctrl", ""), ("k12", "_k12"), ("cap22", "_cap22")]:
         p = RES / f"{base}{suf}" / "train_history.json"
-        best[arm] = min(json.loads(p.read_text())["val_nll"])
+        v = json.loads(p.read_text())["val_nll"]
+        stat[arm] = {"last3": sum(v[-3:]) / 3, "final": v[-1], "best": min(v)}
         inputs.append(str(p))
-    d12, dcap = best["k12"] - best["ctrl"], best["cap22"] - best["ctrl"]
-    assert f"{d12:+.1f}" == "+2.9" and f"{dcap:+.1f}" == "+228.4", (d12, dcap)
+    dl = {a: stat[a]["last3"] - stat["ctrl"]["last3"] for a in stat}
+    d12, dcap = dl["k12"], dl["cap22"]
+    assert f"{d12:+.1f}" == "+3.3" and f"{dcap:+.1f}" == "+401.6", (d12, dcap)
     (OUT / "val_nll_k12_cap22.tsv").write_text(
-        "arm\tbest_val_nll\tdelta_vs_ctrl\n"
-        + "\n".join(f"{k}\t{v:.3f}\t{v - best['ctrl']:+.3f}" for k, v in best.items()) + "\n")
+        "arm\tval_nll_last3_mean\tdelta_last3\tval_nll_final\tdelta_final\tval_nll_best\tdelta_best\n"
+        + "\n".join(f"{k}\t{v['last3']:.3f}\t{v['last3'] - stat['ctrl']['last3']:+.3f}"
+                    f"\t{v['final']:.3f}\t{v['final'] - stat['ctrl']['final']:+.3f}"
+                    f"\t{v['best']:.3f}\t{v['best'] - stat['ctrl']['best']:+.3f}" for k, v in stat.items()) + "\n")
 
     prov = {"task": "T2 release supplement", "script": str(Path(__file__).relative_to(ROOT)),
             "generated_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "maturity": "[FINAL n=12 slides/folds]", "inputs": inputs,
             "checks": {"mask_mean_slots": round(mean_slots, 3), "lora_mean_delta": round(mean_d, 4),
                        "lora_folds_up": n_up, "lora_wilcoxon_p": round(pval, 4),
-                       "val_nll_delta_k12": round(d12, 3), "val_nll_delta_cap22": round(dcap, 3)}}
+                       "val_nll_delta_last3_k12": round(d12, 3), "val_nll_delta_last3_cap22": round(dcap, 3)}}
     (OUT / "PROVENANCE.json").write_text(json.dumps(prov, indent=2) + "\n")
     print(json.dumps(prov["checks"]))
     print(f"wrote 3 tables + PROVENANCE.json to {OUT}")

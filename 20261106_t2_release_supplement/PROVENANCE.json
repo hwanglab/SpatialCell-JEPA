@@ -1,7 +1,7 @@
 {
   "task": "T2 release supplement",
   "script": "scripts/release/build_release_supplement.py",
-  "generated_utc": "2026-11-06T21:09:38+00:00",
+  "generated_utc": "2026-11-07T05:50:31+00:00",
   "maturity": "[FINAL n=12 slides/folds]",
   "inputs": [
     "parks/p16_masked_ctx/eval/Slide 5/PROVENANCE.json",
@@ -49,7 +49,7 @@
     "lora_mean_delta": 0.0023,
     "lora_folds_up": 7,
     "lora_wilcoxon_p": 0.5693,
-    "val_nll_delta_k12": 2.855,
-    "val_nll_delta_cap22": 228.411
+    "val_nll_delta_last3_k12": 3.301,
+    "val_nll_delta_last3_cap22": 401.557
   }
 }
