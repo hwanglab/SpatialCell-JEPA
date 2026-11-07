@@ -90,8 +90,8 @@ across twelve Visium HD slides. The main findings, as stated in the paper:
   does, under both readouts; where all do, it is better under a nonlinear readout and not detectably
   different under the linear one. The uncertainty the predictor reports is, on average, higher at
   interfaces than in uniform tissue.
-- Taken together, as far as cell types can show, the cell's foundation-model embedding already
-  carries its neighborhood context, and what a separate reading of the neighbors adds is local
+- Taken together, as far as cell types can show, the main foundation model's cell embedding already
+  carries its neighborhood context, and what a separate reading of the neighbors changes is local
   rather than global.
 
 ---
