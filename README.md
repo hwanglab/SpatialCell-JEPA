@@ -6,8 +6,8 @@ Accompanies *SpatialCell-JEPA: do pathology foundation-model cell embeddings alr
 
 **License:** code (`code/`) under the [MIT License](LICENSE); result tables under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-This repository accompanies our recent work, **SpatialCell-JEPA**, which studies how much of a cell's
-identity in tissue is carried by the cells around it. It borrows the prediction objective of
+This repository accompanies our recent work, **SpatialCell-JEPA**, which asks whether pathology
+foundation-model cell embeddings already encode their neighborhood context. It borrows the prediction objective of
 joint-embedding predictive architectures (JEPA) — predicting the *latent representation* of a hidden
 target from its visible context, rather than reconstructing pixels or comparing augmented views
 ([Assran et al., *Self-Supervised Learning from Images with a Joint-Embedding Predictive
@@ -23,9 +23,8 @@ Below is a short summary of the idea, then a description of what is in this repo
 
 The tumor microenvironment is a spatially organized ecosystem in which cancer cells interact with
 immune cells, fibroblasts, endothelial cells and extracellular matrix, and those interactions bear on
-tumor growth, immune evasion and response to treatment. A cell's functional state therefore cannot
-always be read from its appearance alone: two morphologically similar cells may occupy different
-functional states because they sit in different cellular neighborhoods.
+tumor growth, immune evasion and response to treatment, so a cell is better understood together with
+the cells around it than in isolation.
 
 ### 1.2 Our input is the H&E slide
 
@@ -71,29 +70,29 @@ what adaptation did. So the encoder stays **frozen** and we train **only the pre
         the target cell's own embedding m is WITHHELD from the context set
 ```
 
-We then evaluate on **patient-held-out cell typing** across twelve slides. The main findings:
+We then compare the estimate with the cell's own embedding on **patient-held-out cell typing**
+across twelve Visium HD slides. The main findings, as stated in the paper:
 
-- The neighbor-derived estimate `mu` types cells **as well as** the cell's own embedding `m`
-  (macro-F1 0.619 against 0.616 in the main setting); in all eight readout and crop settings their
-  difference stays within ±0.011 at 90 percent confidence.
+- The neighbor-derived estimate `mu` types cells **as well as** the cell's own embedding `m`:
+  macro-F1 0.619 against 0.616 with a logistic probe at a 56 µm crop. In all eight settings, four
+  probe variants at each of two crops (the bigger, 112 µm, with a separately configured predictor),
+  their difference stays within ±0.011 at 90 percent confidence, and a predictor trained on a second
+  foundation model (Virchow2) differs by only −0.0022.
 - The predictor's attention is local: it uses about **seven of its thirty-six** context cells, at a
-  weighted mean distance inside the half-width of the crop the embedding was computed from. The
-  target's embedding is withheld from the context set, but not from the neighbors' image crops,
-  which overlap it.
-- A separately configured predictor at a wider crop, and a predictor trained on a second foundation
-  model, show the same null.
-- **Masking the target** out of its neighbors' crops lowers `mu` slightly but leaves its combination
-  with `m` unchanged, so the null is not an artifact of that overlap.
-- A **cell-only embedding**, computed from the same crop with the encoder allowed to see only the
-  patches covering the cell itself, types worse and knows no more about its neighbors' types than
-  the cell's own type implies; adding the masked `mu` back restores the typing score. The context is
-  already in the cell's own embedding: for H-optimus-0, at the resolution of three-class typing, the
-  answer to the title's question is yes.
-- The null holds only **on average**. Grouping cells by how many of their eight nearest neighbors
-  share their reference type (a diagnostic, since it reads labels), the estimate is worse than `m`
-  where none does, under both readouts; where all do, it is better under a nonlinear readout and not
-  detectably different under the linear one. The uncertainty the predictor reports is, on average,
-  higher at interfaces than in uniform tissue.
+  weighted mean distance inside the half-width of the crop the embedding was computed from.
+- **Masking the target** out of its neighbors' crops lowers `mu` by about 0.005 but leaves `m ⊕ mu`
+  at the level of `m`.
+- A **cell-only embedding**, computed from the same crop with the encoder allowed to see little
+  beyond the cell itself, types worse and knows no more about its neighbors' types than the cell's
+  own type implies; adding the masked `mu` back restores the typing score.
+- **Local differences remain.** When cells are grouped by how many of their eight nearest neighbors
+  share their reference type (a diagnostic, since it reads labels), `mu` is worse than `m` where none
+  does, under both readouts; where all do, it is better under a nonlinear readout and not detectably
+  different under the linear one. The uncertainty the predictor reports is, on average, higher at
+  interfaces than in uniform tissue.
+- Taken together, as far as cell types can show, the cell's foundation-model embedding already
+  carries its neighborhood context, and what a separate reading of the neighbors adds is local
+  rather than global.
 
 ---
 
@@ -118,7 +117,7 @@ institution and are not publicly available.
 
 ### 2.2 Analysis code — `code/`
 
-The analysis and evaluation code that produced the tables above: 22 files, about 5,500 lines. The
+The analysis and evaluation code that produced the tables above: 24 files, about 5,600 lines. The
 set is not curated by hand — each released run names its producing script in its `PROVENANCE.json`,
 and `code/` is exactly that set plus the modules those scripts import.
 
@@ -144,6 +143,7 @@ and `code/` is exactly that set plus the modules those scripts import.
 | `camera_ready_delta_ci.py` | 90 percent confidence intervals and equivalence tests of `mu - m` |
 | `build_release_supplement.py` | builds `20261106_t2_release_supplement/` |
 | `pooler.py`, `pooler_grid.py`, `fm_loaders.py` | hull-weighted pooling of patch tokens and the encoder loaders |
+| `io_polygons.py`, `io_polygons_npz.py` | nucleus-polygon readers imported by the masking and cell-only scripts |
 
 ⚠ **This code is not runnable as released, and does not claim to be.** It consumes cached
 foundation-model embeddings, label files and whole-slide images, none of which are in this release
@@ -187,8 +187,9 @@ identifier used anywhere in this release.
 
 ## 4. What was removed
 
-To de-identify patient data (first for anonymous review), the working copies were processed as follows.
-The redacted fields still read `[redacted for anonymous review]`.
+To de-identify patient data, the working copies were processed as follows. The redacted fields read
+`[redacted for anonymous review]`, the placeholder used when the release was first prepared for
+double-blind review.
 
 1. **Specimen accession numbers replaced by the slide numbers above**, in file contents, in JSON
    object keys, and in directory names.
@@ -246,3 +247,22 @@ uses the fixed `C = 0.01` stated in its captions, not the best-C value.
 
 Directory names use `Slide_1` rather than `Slide 1` to avoid spaces in paths; file contents use the
 paper's form.
+
+---
+
+## 7. Dependencies
+
+Python 3 with numpy, pandas, scipy, scikit-learn, PyTorch, scikit-image, openslide-python,
+safetensors and Pillow. Reading the result tables needs only pandas.
+
+## 8. Citation
+
+```bibtex
+@inproceedings{park2026spatialcelljepa,
+  title     = {{SpatialCell-JEPA}: do pathology foundation-model cell embeddings already encode neighborhood context?},
+  author    = {Park, Sunho and Van Belkum, Max and Kim, Minji and Clemenceau, Jean R. and Chung, Seock-Jin and Choi, Yoon Ho and Lee, Sung Hak and Hwang, Tae Hyun},
+  booktitle = {NeurIPS 2026 Workshop on Interpretability for Discovery},
+  year      = {2026},
+  note      = {Non-archival}
+}
+```
